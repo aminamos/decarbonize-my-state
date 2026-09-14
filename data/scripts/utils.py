@@ -89,12 +89,12 @@ def json_data_builder(dataframe, outer_tag="default", is_array=True, array_key="
     So at that point, all we need to do is set larger key for that whole list as whatever the state is
     And then then json_object matches the format we need. 
     '''
-    dataframe=dataframe.applymap(lambda x: "" if pd.isnull(x) else x)
+    dataframe=dataframe.map(lambda x: "" if pd.isnull(x) else x)
     # initiate empty json object to iterate with
     json_object = []
 
-    # grab list of unique states for for_loop
-    unique_states = list(set(dataframe['state']))
+    # grab list of unique states for for_loop (sorted for deterministic output)
+    unique_states = sorted(set(dataframe['state']))
     
     for state in unique_states:
         state_df = dataframe.loc[dataframe['state']==state]
