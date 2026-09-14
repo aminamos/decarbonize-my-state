@@ -4,9 +4,13 @@
   // Set this to today's date
   "compatibility_date": "2026-09-14",
   // Static Astro build output (asset-only Worker, no `main` script).
-  // Astro emits a 404.html fallback page; serve it for unmatched routes.
+  // - Astro writes directory-style routes (e.g. /minnesota/index.html);
+  //   "drop-trailing-slash" serves /minnesota directly instead of
+  //   redirecting /minnesota -> /minnesota/.
+  // - Astro emits a 404.html fallback page; serve it for unmatched routes.
   "assets": {
     "directory": "./dist",
+    "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page"
   }
 }
