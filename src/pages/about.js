@@ -309,7 +309,7 @@ const AboutPage = ({ data }) => {
           </ul>
           <p>
             This website is hosted on{" "}
-            <a href="https://www.netlify.com/">Netlify</a>.
+            <a href="https://workers.cloudflare.com/">Cloudflare Workers</a>.
           </p>
 
           <h2 className="pt-3">Contact us</h2>
