@@ -8,8 +8,8 @@ services:
     ports:
       - 8000:8000
     entrypoint: yarn
-    # 'develop' is a custom Node.js script defined in package.json
-    command: develop
+    # 'dev' is a custom Node.js script defined in package.json
+    command: dev
 
 volumes:
   # Making node_modules a named volume prevents the ./app volume mount from

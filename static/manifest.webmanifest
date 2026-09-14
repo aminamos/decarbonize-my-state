@@ -1,0 +1,16 @@
+{
+  "name": "Decarb My State",
+  "short_name": "Decarb My State",
+  "description": "A site showing emissions statistics and decarbonization actions state by state",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#663399",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

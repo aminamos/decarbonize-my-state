@@ -8,13 +8,13 @@ Chi Hack Night data visualization project to measure the state and progress of d
 - [Running project notes](https://docs.google.com/document/d/14gs7gO9YmBgIWOMd7oGXmIF1XRwfBIt8jGTOpn8udjg/edit#heading=h.n9cfl96c3r81)
 - [Wireframes](https://app.moqups.com/pcSQvUMmsyAa1SN58KaKg1EKuYRs8iRX/view/page/a68639957)
 
-This is a Gatsby app built on top of the [DataMade Gatsby starter template](https://github.com/datamade/how-to/tree/master/docker/templates), which was adapted from the [default Gatsby starter repo](https://github.com/gatsbyjs/gatsby-starter-default).
+This is an [Astro](https://astro.build/) app. It was originally built as a Gatsby site on top of the [DataMade Gatsby starter template](https://github.com/datamade/how-to/tree/master/docker/templates), and was migrated to Astro (React islands via `@astrojs/react`). Static HTML is generated at build time for every route and deployed as a Cloudflare Worker serving the `dist/` directory.
 
 ### 💾 Requirements
 
 - [Docker](https://docs.docker.com/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- Node 16.X
+- Node 20+ (developed on Node 22/26)
 
 ### 🚀 Quick start
 
@@ -28,18 +28,14 @@ This is a Gatsby app built on top of the [DataMade Gatsby starter template](http
 2. Start developing
 
    ```shell
-   docker-compose up --build
-   ```
-
-   or
-
-   ```shell
    yarn install
    ```
    to install dependencies, then
    ```shell
-   yarn develop
+   yarn dev
    ```
+
+   (or `docker-compose up --build`, which runs `yarn dev` in a container)
 
    Your site should now be up and running at `http://localhost:8000`!
 
@@ -71,30 +67,24 @@ yarn remove <dependency name>
 
 ## Testing & syntax linting
 
-When you run `docker-compose up` locally, ESLint makes sure you're following the right JS style conventions and not importing or exporting anything extraneously. If you are, the build will fail.
-
-If you want to check the linter on its own you can run:
-
-```
-docker-compose run --rm app run test
-```
-
-or
+Formatting is enforced with [Prettier](https://prettier.io/). To check it:
 
 ```shell
 yarn test
 ```
 
-If you want to reformat with the linter, you can run:
-
-```
-docker-compose run --rm app run format
-```
-
-or
+To reformat:
 
 ```shell
 yarn format
+```
+
+## Build
+
+To produce the static site in `dist/`:
+
+```shell
+yarn build
 ```
 
 ## Data processing
@@ -114,7 +104,7 @@ We wanted the social cards to include what number emitter the state is and what 
 
 **To generate them:**
 
-First make sure `yarn develop` is running
+First make sure `yarn dev` is running (the dev server is pinned to port 8000)
 
 Then run `yarn generate-social-all` to generate all social images (~3,500), or run:
 - `yarn generate-social-states` for just state social images (50)
@@ -122,64 +112,60 @@ Then run `yarn generate-social-all` to generate all social images (~3,500), or r
 
 To then show progress logs, just tack on `--debugging`, e.g. `yarn generate social-power-plants --debugging`.
 
-**Finally:** Copy paste `/power-plant-social-out/social-cards/power-plant` directory into
-`static/social-cards`. You have to do this because writing a file to the `/static` directory causes
-Gatsby develop to rebuild, so we cannot have the power plant generation with (> 3K plants) to static
-while relying on develop.
+**Finally:** Copy `/power-plant-social-out/social-cards/power-plants` into
+`static/social-cards/power-plants`. We write power plant cards to a scratch directory first because
+writing that many files into `static/` triggers a dev-server reload for every file.
 
 ### 🤖 What's inside?
 
-_Taken from `gatsby-starter-default`_
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+A quick look at the top-level files and directories in this Astro project.
 
     .
-    ├── .github/workflows
-    ├── src
-    ├── static
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
+    ├── .github/workflows     # CI (Prettier check)
+    ├── data/                 # raw + final data (data/final/** is what the site reads)
+    ├── scripts/              # social card generator (puppeteer)
+    ├── src/
+    │   ├── pages/            # Astro routes (file-based)
+    │   ├── layouts/          # Base.astro — document head + global CSS
+    │   ├── views/            # React page components rendered as islands
+    │   ├── components/       # React components (charts, map, layout chrome)
+    │   ├── constants/        # citations, terminology, state names
+    │   ├── lib/data.js       # build-time data accessors over data/final/**
+    │   ├── images/           # bundled images
+    │   └── styles/           # global + per-page CSS
+    ├── static/               # served verbatim at the site root (social cards, plant images)
+    ├── astro.config.mjs
     ├── package.json
-    └── README.md
+    └── wrangler.jsonc
 
-1.  **`/.github/workflows`**: This directory contains the project's [Github Actions](https://github.com/features/actions). By default, `test.yml` runs a linter.
+1.  **`/src/pages`**: File-based routes. `index.astro`, `about.astro`, etc. are static pages;
+    `[state]/index.astro` and `[state]/power-plant/[slug].astro` generate one page per state and
+    per power plant via `getStaticPaths`.
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+2.  **`/src/lib/data.js`**: Astro has no GraphQL data layer, so this module reads `data/final/**`
+    directly and returns it in the `{ allXJson: { edges: [{ node }] } }` shape the React components
+    expect. Filtering happens at build time so only the page's slice reaches the client.
 
-3.  **`/static`**: This directory contains files you'll need to access directly on the frontend, like images for social cards.
+3.  **`/src/views`**: The React page bodies, rendered with `client:load` so they server-render (for
+    SEO) and then hydrate (for charts, the map, and tooltips).
 
-4.  **`.eslintrc.js`**: This is a configuration file for [ESLint](https://eslint.org/), a Javascript linter.
+4.  **`/static`**: Copied verbatim into `dist/` (configured via `publicDir` in `astro.config.mjs`).
+    Do not import from here; reference these paths directly.
 
-5.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+5.  **`wrangler.jsonc`**: Cloudflare Workers static assets config; serves `./dist`.
 
-6.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+### 🎓 Learning Astro
 
-7.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-8.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-9.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-10. **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-### 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+- [Astro documentation](https://docs.astro.build/)
+- [React integration](https://docs.astro.build/en/guides/integrations-guide/react/)
 
 ### 💫 Deploy
 
-DataMade deploys static sites using Netlify. This project's staging URL is [decarbonizemystate.com](https://decarbonizemystate.com/).
+The site is deployed to Cloudflare as a Workers static-assets Worker:
+
+```shell
+yarn build
+wrangler deploy
+```
+
+`wrangler.jsonc` points the Worker at `./dist` and serves `404.html` for unmatched routes.

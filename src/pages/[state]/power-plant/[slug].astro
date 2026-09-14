@@ -1,0 +1,25 @@
+---
+import Base from "../../../layouts/Base.astro"
+import PowerPlantDetailPage from "../../../components/power-plant-details.jsx"
+import { getPowerPlantPaths, getPowerPlantBundle } from "../../../lib/data.js"
+
+export function getStaticPaths() {
+  return getPowerPlantPaths().map(({ state, slug }) => ({
+    params: { state, slug },
+    props: { state, slug },
+  }))
+}
+
+const { state, slug } = Astro.props
+const data = getPowerPlantBundle(state, slug)
+const plant = data.allPowerPlantsJson.edges[0].node.power_plants.find(
+  powerPlant => powerPlant.slug === slug
+)
+---
+
+<Base
+  title={`${plant.plant_name} Power Plant | Decarb My State`}
+  image={`social-cards/power-plants/${state}/${slug}.jpg`}
+>
+  <PowerPlantDetailPage client:load plantSlug={slug} data={data} />
+</Base>

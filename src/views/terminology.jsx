@@ -1,0 +1,27 @@
+import React from "react"
+
+import Layout from "../components/layout"
+import { terminologyDefs } from "../constants/terminology-list"
+
+const Terminology = () => {
+  return (
+    <Layout>
+      <div className="container col-lg-10">
+        <h1 id="main" className="mb-2">
+          Terminology
+        </h1>
+
+        <dl className="mt-0 terminology-page-style">
+          {terminologyDefs.map(t => (
+            <>
+              <dt id={t.slug}>{t.term}</dt>
+              <dd>{t.definition}</dd>
+            </>
+          ))}
+        </dl>
+      </div>
+    </Layout>
+  )
+}
+
+export default Terminology

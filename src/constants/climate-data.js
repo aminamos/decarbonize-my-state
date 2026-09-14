@@ -1,3 +1,1 @@
-module.exports = {
-  yearsToTarget: 27,
-}
+export const yearsToTarget = 27

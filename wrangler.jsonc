@@ -3,10 +3,10 @@
   "name": "decarb-my-state",
   // Set this to today's date
   "compatibility_date": "2026-09-14",
-  // Static Gatsby 2 build output (asset-only Worker, no `main` script).
-  // Gatsby emits a 404.html fallback page; serve it for unmatched routes.
+  // Static Astro build output (asset-only Worker, no `main` script).
+  // Astro emits a 404.html fallback page; serve it for unmatched routes.
   "assets": {
-    "directory": "./public",
+    "directory": "./dist",
     "not_found_handling": "404-page"
   }
 }

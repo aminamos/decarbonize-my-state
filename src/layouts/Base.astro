@@ -1,0 +1,82 @@
+---
+/**
+ * Base document shell for every page.
+ *
+ * Replaces the Gatsby `Layout` + `SEO` (react-helmet) pair: the document head
+ * is rendered by Astro at build time, so per-page titles / Open Graph tags are
+ * static HTML. The site header and footer still live in the React `Layout`
+ * component so the bootstrap navbar collapse keeps working.
+ */
+import "../styles/global.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+
+const siteUrl = "https://decarbmystate.com/"
+const defaultTitle = "Decarb My State"
+const defaultDescription = ""
+const defaultImage = "socialcard.png"
+const siteName = "Decarb My State"
+const author = "Chi Hack Night"
+const gaMeasurementId = "G-PSQR8C650G"
+
+const {
+  title,
+  description,
+  image,
+  article = false,
+} = Astro.props
+
+const seoTitle = title || defaultTitle
+const seoDescription = description || defaultDescription
+const seoImage = `${siteUrl}${image || defaultImage}`
+const seoUrl = `${siteUrl}${Astro.url.pathname.replace(/^\//, "")}`
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seoTitle}</title>
+
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:site_name" content={siteName} />
+    <meta name="author" content={author} />
+    <meta property="og:url" content={seoUrl} />
+
+    <meta name="description" content={seoDescription} />
+    <meta property="og:description" content={seoDescription} />
+
+    <meta name="image" content={seoImage} />
+    <meta property="og:image" content={seoImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content={author} />
+    <meta name="twitter:title" content={seoTitle} />
+    <meta name="twitter:description" content={seoDescription} />
+    <meta name="twitter:image" content={seoImage} />
+    <meta name="twitter:image:alt" content={seoDescription} />
+    <meta name="twitter:site" content={siteName} />
+    <meta name="twitter:url" content={seoUrl} />
+
+    <link rel="icon" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+    ></script>
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+      gtag("config", gaMeasurementId)
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

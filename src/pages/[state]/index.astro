@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro"
+import StateDetailsPage from "../../components/state-details.jsx"
+import { placeNames, getStateBundle } from "../../lib/data.js"
+import { slugToTitle } from "../../helper-functions.js"
+
+export function getStaticPaths() {
+  return placeNames.map(state => ({
+    params: { state },
+    props: { state },
+  }))
+}
+
+const { state } = Astro.props
+const data = getStateBundle(state)
+
+const placeTitle = slugToTitle(state)
+const currentYear = new Date().getFullYear()
+const yearsToTarget = 2050 - currentYear
+const cutPerYearPrcnt = (100 / yearsToTarget).toFixed(1)
+
+// Description retains no formatting, so this needs to be single line
+const description = `To get to zero by 2050, ${placeTitle} must cut climate pollution by ${cutPerYearPrcnt}% a year. Electrification can help us get there.`
+
+// Social cards are named by slug (e.g. social-cards/new_york.jpg)
+const image = `social-cards/${state}.jpg`
+---
+
+<Base title={`${placeTitle} | Decarb My State`} description={description} image={image}>
+  <StateDetailsPage client:load stateSlug={state} data={data} />
+</Base>

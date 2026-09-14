@@ -2,8 +2,7 @@
  * This is manually generated from the sitemap.txt - a bit annoying, but it should be only
  * used for generating power plant social cards
  */
-module.exports = {
-  powerPlantUrls: `
+export const powerPlantUrls = `
 https://decarbmystate.com/tennessee/power-plant/allen
 https://decarbmystate.com/tennessee/power-plant/bull-run
 https://decarbmystate.com/tennessee/power-plant/cumberland
@@ -3481,5 +3480,4 @@ https://decarbmystate.com/missouri/power-plant/city-of-west-plains-power-station
 https://decarbmystate.com/missouri/power-plant/hannibal-oakwood-substation
 https://decarbmystate.com/missouri/power-plant/hannibal-water-treatment-plant
 https://decarbmystate.com/missouri/power-plant/hannibal-wastewater-treatment-plant
-`,
-}
+`

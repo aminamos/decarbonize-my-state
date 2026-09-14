@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro"
+import AboutPage from "../views/about.jsx"
+import { getCleanEmissionsData } from "../lib/data.js"
+import { getLatestUsData } from "../components/getLatestEmissions.js"
+
+const barChartData = getLatestUsData(getCleanEmissionsData())[0]
+---
+
+<Base title="About | Decarb My State">
+  <AboutPage client:load barChartData={barChartData} />
+</Base>

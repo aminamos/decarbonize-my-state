@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro"
+import IndexPage from "../views/index.jsx"
+import { getCleanEmissionsData } from "../lib/data.js"
+import { getLatestEmissions } from "../components/getLatestEmissions.js"
+
+// Prep data for the choropleth map (state -> latest year total emissions)
+const mapData = getLatestEmissions(getCleanEmissionsData())
+---
+
+<Base
+  title="Decarb My State"
+  description="You can help decarbonize your state, and it's a lot simpler than you think! Learn how with Decarbonize My State."
+>
+  <IndexPage client:load mapData={mapData} />
+</Base>

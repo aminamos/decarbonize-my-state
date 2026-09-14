@@ -1,6 +1,4 @@
-FROM nikolaik/python-nodejs:latest
-
-RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
+FROM node:22-slim
 
 RUN mkdir /app
 WORKDIR /app
@@ -10,8 +8,8 @@ COPY yarn.lock ./
 RUN yarn config set network-timeout 300000
 RUN yarn install
 
+COPY . /app
+
 # 'build' is a custom Node.js script defined in package.json
 ENTRYPOINT [ "yarn" ]
 CMD [ "build" ]
-
-COPY . /app
