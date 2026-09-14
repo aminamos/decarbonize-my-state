@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import SingleBarChart from "../components/singlebar"
 import { slugToTitle } from "../helper-functions"
 import { getAllEmissionsEdges } from "../lib/data"
+import { ordinalSuffix } from "../lib/ordinal"
 
 // Built once at build time and shipped with this route's bundle. The page is
 // only used by the puppeteer social card generator, not by site visitors.
@@ -58,22 +59,7 @@ function rankState(data, CurrStateSlug) {
     entry => entry[0] === CurrStateSlug
   )[2]
 
-  // alter what the suffix of the number is
-  var emitterSuffix = "th" // default to th (e.g. 4th, 5th)
-  var finalDigitOfStatePos = statePosInArr % 10
-
-  // 1 -> 1st
-  if (finalDigitOfStatePos + 1 === 1) {
-    emitterSuffix = "st"
-  }
-  // 2 -> 2nd
-  else if (finalDigitOfStatePos + 1 === 2) {
-    emitterSuffix = "nd"
-  }
-  // 3 -> 3rd
-  else if (finalDigitOfStatePos + 1 === 3) {
-    emitterSuffix = "rd"
-  }
+  const emitterSuffix = ordinalSuffix(statePosInArr + 1)
 
   return { emitterSuffix, statePosInArr }
 }

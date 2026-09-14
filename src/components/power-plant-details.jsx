@@ -14,6 +14,7 @@ import BackIconWhite from "../images/icons/arrow-left-white.svg?url"
 import Layout from "./layout"
 import NewTabIcon from "./new-tab-icon"
 import { getShortCitation } from "../constants/source-citations"
+import { parseStatValue, STAT_UNAVAILABLE } from "../lib/plant-stats"
 
 /**
  * Helpful stats we use to provide context about power plant metrics
@@ -29,6 +30,24 @@ const ContextStats = {
     source:
       "https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle",
   },
+}
+
+/**
+ * Parse a value from the plant data into a number, or null when it is missing
+ * or not numeric. Roughly 200 plants have blank or parenthesized
+ * net-generation / CO2e values, so every stat below has to tolerate a null.
+ */
+function StatValue({ value, suffix = null }) {
+  const parsed = parseStatValue(value)
+  if (parsed === null) {
+    return <>{STAT_UNAVAILABLE}</>
+  }
+  return (
+    <>
+      {parsed.toLocaleString()}
+      {suffix ? <> {suffix}</> : null}
+    </>
+  )
 }
 
 const PowerPlantDetailPage = ({ plantSlug, data }) => {
@@ -48,19 +67,23 @@ const PowerPlantDetailPage = ({ plantSlug, data }) => {
 
   const MapImgUrl = `/power-plant-satellite-imgs/${PowerPlantStateSlug}-${PowerPlantSlug}.png`
 
-  /** Calculate comparison stats */
-  const NetGenerationInt = parseInt(
-    PowerPlant.Plant_annual_net_generation__MWh_.replaceAll(",", "")
+  /** Calculate comparison stats (null when the source value is unavailable) */
+  const NetGenerationInt = parseStatValue(
+    PowerPlant.Plant_annual_net_generation__MWh_
   )
   const NetGenerationEquivalentHomes =
-    NetGenerationInt / ContextStats.netGeneration.avgAmericanHomeMwhPerYear
+    NetGenerationInt === null
+      ? null
+      : NetGenerationInt / ContextStats.netGeneration.avgAmericanHomeMwhPerYear
 
-  const CO2eEmissionsInt = parseInt(
-    PowerPlant.Plant_annual_CO2_equivalent_emissions__tons_.replaceAll(",", "")
+  const CO2eEmissionsInt = parseStatValue(
+    PowerPlant.Plant_annual_CO2_equivalent_emissions__tons_
   )
   const EmissionsEquivalentCars =
-    CO2eEmissionsInt /
-    ContextStats.co2eEmissions.avgAmericanCarEmissionsTonsPerYear
+    CO2eEmissionsInt === null
+      ? null
+      : CO2eEmissionsInt /
+        ContextStats.co2eEmissions.avgAmericanCarEmissionsTonsPerYear
 
   return (
     <Layout>
@@ -135,49 +158,63 @@ const PowerPlantDetailPage = ({ plantSlug, data }) => {
 
               <dt>Annual Net Generation</dt>
               <dd className="mb-0">
-                {PowerPlant.Plant_annual_net_generation__MWh_}
-                &nbsp;MWh (Megawatt Hours)
+                <StatValue
+                  value={PowerPlant.Plant_annual_net_generation__MWh_}
+                  suffix={<>MWh (Megawatt Hours)</>}
+                />
               </dd>
 
-              <p className="context-msg">
-                <strong>Context:</strong> That&apos;s equivalent to the annual
-                power demand of{" "}
-                {Math.round(NetGenerationEquivalentHomes).toLocaleString()}{" "}
-                American homes (11 MWh each,{" "}
-                <a
-                  href={ContextStats.netGeneration.source}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  source: EIA
-                  <NewTabIcon />
-                </a>
-                )
-              </p>
+              {NetGenerationEquivalentHomes !== null && (
+                <p className="context-msg">
+                  <strong>Context:</strong> That&apos;s equivalent to the annual
+                  power demand of{" "}
+                  {Math.round(NetGenerationEquivalentHomes).toLocaleString()}{" "}
+                  American homes (11 MWh each,{" "}
+                  <a
+                    href={ContextStats.netGeneration.source}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    source: EIA
+                    <NewTabIcon />
+                  </a>
+                  )
+                </p>
+              )}
 
               <dt className="mt-4">
                 Annual CO<sub>2</sub> equivalent emissions
               </dt>
               <dd className="mb-0">
-                {CO2eEmissionsInt.toLocaleString()}
-                &nbsp;metric tons CO<sub>2</sub> equivalent
+                <StatValue
+                  value={
+                    PowerPlant.Plant_annual_CO2_equivalent_emissions__tons_
+                  }
+                  suffix={
+                    <>
+                      metric tons CO<sub>2</sub> equivalent
+                    </>
+                  }
+                />
               </dd>
 
-              <p className="context-msg">
-                <strong>Context:</strong> That&apos;s equivalent to the annual
-                emissions of about{" "}
-                {Math.round(EmissionsEquivalentCars).toLocaleString()} American
-                cars (4.6 metric tons each,{" "}
-                <a
-                  href={ContextStats.co2eEmissions.source}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  source: EPA
-                  <NewTabIcon />
-                </a>
-                )
-              </p>
+              {EmissionsEquivalentCars !== null && (
+                <p className="context-msg">
+                  <strong>Context:</strong> That&apos;s equivalent to the annual
+                  emissions of about{" "}
+                  {Math.round(EmissionsEquivalentCars).toLocaleString()}{" "}
+                  American cars (4.6 metric tons each,{" "}
+                  <a
+                    href={ContextStats.co2eEmissions.source}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    source: EPA
+                    <NewTabIcon />
+                  </a>
+                  )
+                </p>
+              )}
             </dl>
           </div>
         </div>
@@ -190,8 +227,14 @@ const PowerPlantDetailPage = ({ plantSlug, data }) => {
                 Annual CO<sub>2</sub> emissions
               </dt>
               <dd>
-                {PowerPlant.Plant_annual_CO2_emissions__tons_}
-                &nbsp;metrics tons CO<sub>2</sub>
+                <StatValue
+                  value={PowerPlant.Plant_annual_CO2_emissions__tons_}
+                  suffix={
+                    <>
+                      metric tons CO<sub>2</sub>
+                    </>
+                  }
+                />
               </dd>
             </div>
 
@@ -199,24 +242,44 @@ const PowerPlantDetailPage = ({ plantSlug, data }) => {
               <dt>
                 Annual SO<sub>2</sub> (Sulfer Dioxide) emissions
               </dt>
-              <dd>{PowerPlant.Plant_annual_SO2_emissions__tons_} tons</dd>
+              <dd>
+                <StatValue
+                  value={PowerPlant.Plant_annual_SO2_emissions__tons_}
+                  suffix="tons"
+                />
+              </dd>
             </div>
 
             <div>
               <dt>Annual NOx (Nitrogen Oxide) emissions</dt>
-              <dd>{PowerPlant.Plant_annual_NOx_emissions__tons_} tons</dd>
+              <dd>
+                <StatValue
+                  value={PowerPlant.Plant_annual_NOx_emissions__tons_}
+                  suffix="tons"
+                />
+              </dd>
             </div>
 
             <div>
               <dt>
                 Annual N<sub>2</sub>O (Nitrous Oxide) emissions
               </dt>
-              <dd>{PowerPlant.Plant_annual_N2O_emissions__lbs_} lbs</dd>
+              <dd>
+                <StatValue
+                  value={PowerPlant.Plant_annual_N2O_emissions__lbs_}
+                  suffix="lbs"
+                />
+              </dd>
             </div>
 
             <div>
               <dt>Annual CH4 (Methane) emissions</dt>
-              <dd>{PowerPlant.Plant_annual_CH4_emissions__lbs_} lbs</dd>
+              <dd>
+                <StatValue
+                  value={PowerPlant.Plant_annual_CH4_emissions__lbs_}
+                  suffix="lbs"
+                />
+              </dd>
             </div>
           </dl>
         </div>

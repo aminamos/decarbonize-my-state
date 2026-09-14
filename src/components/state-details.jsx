@@ -93,6 +93,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
   // #### EMISSIONS ####
   const emissionsByYear = data.allEmissionsJson.edges[0].node.emissionsByYear
   const latestReportYear = emissionsByYear[emissionsByYear.length - 1].year
+  const emissionsCoverage = `${emissionsByYear[0].year}–${latestReportYear}`
 
   // Which reporting year the "snapshot" (sector breakdown, shares and the
   // narrative percentages) is shown for. Defaults to the newest year we have.
@@ -171,9 +172,16 @@ export default function StateDetailsPage({ stateSlug, data }) {
 
   // #### POWER GENERATION ####
   const generationByYear = data.allPowerGenerationJson.edges[0].node.generation
+  const generationYears = generationByYear.map(row => row.year)
+  const generationCoverage = `${Math.min(...generationYears)}–${Math.max(
+    ...generationYears
+  )}`
 
   // Sort by newest first and grab the first record to get the latest generation
-  const latestGeneration = generationByYear.sort((a, b) => b.year - a.year)[0]
+  // (copy first so we don't mutate the props array)
+  const latestGeneration = [...generationByYear].sort(
+    (a, b) => b.year - a.year
+  )[0]
 
   const carbonFreePercent =
     latestGeneration.all_solar_percent +
@@ -216,9 +224,10 @@ export default function StateDetailsPage({ stateSlug, data }) {
   )
 
   // getting percentages for chart
-  // Note that we divide in half since 100% solar and 100% wind is 100% of total
-  // not 200%
-  const percToCleanTarget = percSolarTarget + percWindTarget / 2
+  // perc_solar_target and perc_wind_target are each "share of that technology's
+  // own target already built", so 100% solar + 100% wind means the combined
+  // clean build-out is 100% (hence the average, not the sum).
+  const percToCleanTarget = (percSolarTarget + percWindTarget) / 2
   const totalRemaining = 100 - percToCleanTarget
 
   // converting values to strings
@@ -254,8 +263,8 @@ export default function StateDetailsPage({ stateSlug, data }) {
   )
 
   // #### POWER PLANTS ####
-  const powerPlants = data.allPowerPlantsJson.edges[0].node.power_plants
-
+  // Sort a copy so we don't mutate the props array
+  const powerPlants = [...data.allPowerPlantsJson.edges[0].node.power_plants]
   powerPlants.sort((a, b) => b.capacity_mw - a.capacity_mw)
 
   const coalPlants = powerPlants.filter(
@@ -354,7 +363,12 @@ export default function StateDetailsPage({ stateSlug, data }) {
 
       {/* When each dataset on this page was last updated */}
       <div className="col-12">
-        <DataFreshness />
+        <DataFreshness
+          coverage={{
+            emissions: emissionsCoverage,
+            "power-generation": generationCoverage,
+          }}
+        />
       </div>
 
       {/* Intro Section */}
