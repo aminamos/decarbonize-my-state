@@ -21,6 +21,12 @@ export function getLongCitation(slug) {
       {citation.source}
       <br />
       {citation.date}
+      {citation.note && (
+        <>
+          <br />
+          <span className="text-muted">{citation.note}</span>
+        </>
+      )}
     </p>
   )
 }
@@ -33,12 +39,15 @@ function getCitation(slug) {
 const sourceCitations = [
   {
     slug: "emissions",
-    title: "Climate Watch - U.S. States Greenhouse Gas Emissions 1990 to 2018",
-    source: "World Resource Institute",
-    source_short: "WRI",
-    date: "Mar 2021",
+    title:
+      "Inventory of U.S. Greenhouse Gas Emissions and Sinks by State, 1990-2022",
+    source: "U.S. Environmental Protection Agency (EPA)",
+    source_short: "EPA",
+    date: "Sep 2024",
     link:
-      "https://datasets.wri.org/dataset/climate-watch-states-greenhouse-gas-emissions",
+      "https://www.epa.gov/ghgemissions/methodology-report-inventory-us-greenhouse-gas-emissions-and-sinks-state-1990-2022",
+    note:
+      "Historical provenance: 1990-2018 values were published by the World Resources Institute (Climate Watch, Mar 2021) and rescaled to the EPA basis via 2018 overlap-ratio splicing -- see data/DATA_SOURCES.md.",
   },
   {
     slug: "building-footprints",
@@ -75,10 +84,13 @@ const sourceCitations = [
   },
   {
     slug: "power-generation",
-    title: "Electric generation by source 2001-2021",
+    title:
+      "Historical State Data annual_generation_state.xls (1990-2024 final) plus SEDS small-scale solar",
     source: "U.S. Energy Information Administration (EIA)",
     source_short: "EIA",
-    date: "Apr 2022",
-    link: "https://www.eia.gov/opendata/v1/qb.php?category=1",
+    date: "Oct 2025",
+    link: "https://www.eia.gov/electricity/data/state/",
+    note:
+      "Small-scale solar from the State Energy Data System (SEDS) use_all_phy.csv, 1960-2024 final, Jun 2026; 2001-2020 values retain the retired EIA Open Data API v1 basis -- see data/DATA_SOURCES.md.",
   },
 ]
