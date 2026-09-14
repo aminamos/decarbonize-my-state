@@ -32,8 +32,9 @@ national, all states were extended (same effort, keeps state-comparison charts c
   `emission_by_forestry` = LULUCF net total. `state_gdp`, `population`,
   `total_energy_use`, `emission_by_bunker_fuel` are blank for 2019–2022 (not in the
   EPA state file; frontend does not consume them).
-- **Known methodology break at 2018→2019** (WRI/SIT series vs official EPA state
-  disaggregation). Overlap-year (2018) deltas, EPA-mapped vs WRI:
+- **Methodology break at 2018→2019 — FIXED by overlap-ratio splicing**
+  (WRI/SIT basis 1990–2018 vs official EPA state disaggregation 2019–2022).
+  Pre-fix overlap-year (2018) deltas, EPA-mapped vs WRI:
 
   | state | electric | residential | commercial | industrial | transport |
   |---|---|---|---|---|---|
@@ -43,10 +44,78 @@ national, all states were extended (same effort, keeps state-comparison charts c
   | OR | +0.2% | −7.9% | −5.3% | −6.0% | −1.5% |
   | NY | −0.5% | −4.1% | −3.5% | −6.1% | −0.8% |
 
-  Power/buildings track within ~5%; CA/WA transport and MN industry step down
-  (SIT-allocation vs official-inventory difference, not an error in either series).
-- Follow-up: About-page citation still reads "WRI, Mar 2021" — should be updated to
-  EPA Inventory-by-State once this lands.
+  Fix (`data/scripts/splice_emissions_2018_2019.py`, run:
+  `python scripts/splice_emissions_2018_2019.py <AllStateGHGData90-22 workbook>
+  raw/us_emissions_2000_2018.csv splice_factors_2018.csv`, then regenerate
+  `final/emissions/emissions.json` via `get_emissions.py`): standard
+  single-overlap-year ratio splicing — 2018 is the only shared year (WRI ends
+  2018; the EPA workbook covers 1990–2022, so no 2018–2019 mean is possible).
+  Per state × column, `r = EPA_basis(2018) / WRI(2018)`; every pre-2019 value
+  is multiplied by `r` (rounded to 7dp, the finest WRI precision).
+  `EPA_basis(2018)` is recomputed from the workbook with the same mapping as
+  the 2019–2022 append — and that mapping is trusted only because it
+  reproduces **every** appended 2019–2022 state row (51 geos × 4 yrs × 17
+  columns) to a max abs err of 5e-5. Post-2019 state rows are never touched.
+  Usability rule: both sides nonzero with the same sign, else the series is
+  left untouched and flagged — never fabricated.
+- Splice factors (EPA2018/WRI2018; full 884-row table in
+  `data/splice_factors_2018.csv`, focus states below):
+
+  | state | electric | residential | commercial | industrial_sub | transport | fugitive | waste | agri | industrial_by |
+  |---|---|---|---|---|---|---|---|---|---|
+  | CA | 0.9987 | 0.9864 | 0.9495 | 0.9896 | 0.8700 | 2.5631 | 0.8332 | 1.0870 | 0.2810 |
+  | MN | 1.0149 | 0.9770 | 0.9600 | 0.8170 | 1.0372 | — (WRI 0) | 1.0099 | 1.0245 | 4.1639 |
+  | WA | 1.0071 | 0.9503 | 0.9511 | 0.9481 | 0.8042 | — (WRI 0) | 1.2797 | 1.1611 | 0.3129 |
+  | OR | 1.0021 | 0.9220 | 0.9469 | 0.9397 | 0.9845 | 148.8801 | 1.4745 | 1.0827 | 0.2869 |
+  | NY | 0.9954 | 0.9586 | 0.9652 | 0.9393 | 0.9919 | 6.6393 | 0.6352 | 1.0696 | 0.3445 |
+
+  (OR fugitive: valid overlap, both sides small-positive — WRI 0.0043 vs EPA
+  0.64; the flat WRI shape is preserved, only rebased. MN `industrial_by`
+  4.16: small-partition residual, same-sign, kept.)
+- Result: 838 state-series spliced; the old level breaks are gone —
+  CA transport −12.2% → +0.9%, WA transport −17.6% → +2.4%,
+  MN industrial-sub −15.9% → +3.0% (2018→2019, spliced basis).
+- Left untouched (29 state-series, all flagged in `splice_factors_2018.csv`):
+  - `emission_sub_fugitive` with WRI 2018 = 0 (SIT reported no fugitive):
+    CT, DE, GA, HI, ID, IA, ME, MA, **MN**, NH, NJ, NC, RI, SC, VT, **WA**,
+    WI + DC (also DC `emission_by_agriculture` and `emission_sub_electric`,
+    both ~0 — DC has no power plants). Residual effect: a small known step
+    where fugitive appears in 2019 (MN +1.35 on a ~60 bucket ≈ +2.2pp of the
+    2018→2019 move; WA +0.81 on ~26 ≈ +3.1pp) — documented noise, not
+    fabricated history.
+  - `emission_by_forestry` sign flips (sink↔source classification differs):
+    AZ, HI, NV, SD, UT. `emission_by_industrial` sign flips (near-zero
+    partition residuals): ID, NE, ND, SD.
+  - `emission_by_bunker_fuel`, `state_gdp`, `population`, `total_energy_use`:
+    no EPA mapping — untouched all years (still WRI pre-2019, blank 2019+).
+- Remaining 2018→2019 moves are EPA-own-series interannual changes on one
+  methodology, within each series' historical volatility — e.g. electric:
+  CA −7.6% (EPA YoY history: −17.4%, −9.7%, +8.2%), NY −12.2% (−20.3%,
+  +10.8%), MN −14.5% (coal retirements; then −16.0%), OR +25.8% and WA +35.0%
+  (small hydro-dominated bases ~8–10 MMT; 2019 was a low-water year, and both
+  snap back in 2020: −15.5%, −19.7%). Frontend-bucket spot check:
+
+  | state | dirty_power | buildings | transportation | dumps/farms/industrial/other |
+  |---|---|---|---|---|
+  | CA | −7.6% | +7.9% | +0.9% | −0.2% |
+  | MN | −14.5% | +3.3% | −0.1% | −2.4% |
+  | WA | +35.0% | +5.7% | +2.4% | +4.6% (∼3.1pp is the flagged fugitive gap) |
+  | OR | +25.8% | +9.6% | −3.2% | +0.6% |
+  | NY | −12.2% | −0.9% | +1.2% | −3.1% |
+- **National-row repair (same commit).** The EPA workbook's `National` geo
+  carries only LULUCF rows, so the 2019–2022 append had left every
+  `United States` sector/total at **0** — while the frontend's US views read
+  `data["united_states"]` (`src/components/getLatestEmissions.js`), i.e. the
+  About-page US chart showed 0 for recent years. The national row is now the
+  column-wise sum of the states for **every** year (exactly what it was in
+  the WRI era, verified to 4dp). Post-2019 *state* values stay byte-identical;
+  only the national row changed there (0 → sums). National LULUCF is likewise
+  the sum of state LULUCF — note it differs from EPA's headline national
+  LULUCF total (state-level LULUCF does not sum to the national inventory).
+- About-page citation follow-up (below) is done: `src/constants/
+  source-citations.js` now cites the EPA Inventory (Sep 2024) for emissions
+  and EIA Historical State Data + SEDS (Oct 2025) for generation, with the
+  WRI series kept only as a historical-provenance note.
 
 ### 2. `raw/us_electric_generation_2001_20.csv` → 2001–2024 (was 2001–2020)
 
@@ -109,8 +178,14 @@ national, all states were extended (same effort, keeps state-comparison charts c
 - `data/scripts/utils.py`: `DataFrame.applymap` → `.map` (applymap was removed in
   pandas 3.x; repo pins pandas 1.1.3 from the Docker era) and sorted state order so
   regenerated JSON is deterministic. Nothing else in the scripts changed.
-- Verified: `get_emissions.py` + `get_generation.py` exit 0; all 1508 + 1020
-  pre-existing JSON entries are byte-identical to `main` — only 2019–2022 /
-  2021–2024 entries were added (52 emission entries, 51 generation entries).
+- Verified: `get_emissions.py` + `get_generation.py` exit 0. After the
+  2018-overlap splice + national repair: all 2019–2022 *state* emission JSON
+  entries are byte-identical to the pre-splice refresh (only pre-2019 entries
+  rescaled and the `united_states` entries repaired from 0 to state sums);
+  CSV CRLF preserved without BOM (matching the checked-in file),
+  non-spliced columns (`state_gdp`, `population`,
+  `total_energy_use`, `emission_by_bunker_fuel`) cell-identical. Generation
+  JSON untouched by this fix (all 1020 pre-existing entries still
+  byte-identical to `main`).
 - NOTE for Windows shells: redirect with `>` writes UTF-16; write the JSON via
   `python -c` + `subprocess` (UTF-8) as done for this refresh.

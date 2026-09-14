@@ -1,0 +1,885 @@
+state,column,EPA2018_WRI2018_ratio,status
+Alabama,total_emissions_excluding_lucf,1.001702,spliced
+Alabama,total_emissions_including_lucf,1.228346,spliced
+Alabama,total_co2,0.970036,spliced
+Alabama,total_ch4,1.281384,spliced
+Alabama,total_n2o,0.911414,spliced
+Alabama,total_f_gas,1.103318,spliced
+Alabama,emission_by_energy,0.948323,spliced
+Alabama,emission_by_industrial,0.735964,spliced
+Alabama,emission_by_agriculture,0.848684,spliced
+Alabama,emission_by_waste,1.511273,spliced
+Alabama,emission_by_forestry,0.79471,spliced
+Alabama,emission_sub_electric,1.016041,spliced
+Alabama,emission_sub_commercial,0.943845,spliced
+Alabama,emission_sub_residential,0.988035,spliced
+Alabama,emission_sub_industrial,0.840639,spliced
+Alabama,emission_sub_transportation,0.969652,spliced
+Alabama,emission_sub_fugitive,1.290617,spliced
+Alaska,total_emissions_excluding_lucf,0.86131,spliced
+Alaska,total_emissions_including_lucf,0.200246,spliced
+Alaska,total_co2,0.865613,spliced
+Alaska,total_ch4,0.745038,spliced
+Alaska,total_n2o,0.987766,spliced
+Alaska,total_f_gas,1.116806,spliced
+Alaska,emission_by_energy,0.82139,spliced
+Alaska,emission_by_industrial,0.344414,spliced
+Alaska,emission_by_agriculture,0.486831,spliced
+Alaska,emission_by_waste,2.045007,spliced
+Alaska,emission_by_forestry,11.978561,spliced
+Alaska,emission_sub_electric,1.004239,spliced
+Alaska,emission_sub_commercial,0.947683,spliced
+Alaska,emission_sub_residential,0.921953,spliced
+Alaska,emission_sub_industrial,1.006935,spliced
+Alaska,emission_sub_transportation,0.596986,spliced
+Alaska,emission_sub_fugitive,0.731887,spliced
+Arizona,total_emissions_excluding_lucf,1.087047,spliced
+Arizona,total_emissions_including_lucf,1.138215,spliced
+Arizona,total_co2,1.044664,spliced
+Arizona,total_ch4,1.127606,spliced
+Arizona,total_n2o,2.649157,spliced
+Arizona,total_f_gas,0.992512,spliced
+Arizona,emission_by_energy,1.053506,spliced
+Arizona,emission_by_industrial,0.611197,spliced
+Arizona,emission_by_agriculture,1.543693,spliced
+Arizona,emission_by_waste,0.89559,spliced
+Arizona,emission_by_forestry,1.0,"NO OVERLAP (WRI2018=-0.61288441, EPA2018=4.6197); left untouched"
+Arizona,emission_sub_electric,1.010899,spliced
+Arizona,emission_sub_commercial,0.937791,spliced
+Arizona,emission_sub_residential,0.979831,spliced
+Arizona,emission_sub_industrial,0.956308,spliced
+Arizona,emission_sub_transportation,1.095028,spliced
+Arizona,emission_sub_fugitive,26.068581,spliced
+Arkansas,total_emissions_excluding_lucf,1.035501,spliced
+Arkansas,total_emissions_including_lucf,1.060798,spliced
+Arkansas,total_co2,0.976513,spliced
+Arkansas,total_ch4,1.635351,spliced
+Arkansas,total_n2o,0.786247,spliced
+Arkansas,total_f_gas,0.975,spliced
+Arkansas,emission_by_energy,0.986827,spliced
+Arkansas,emission_by_industrial,0.230161,spliced
+Arkansas,emission_by_agriculture,1.13454,spliced
+Arkansas,emission_by_waste,0.981907,spliced
+Arkansas,emission_by_forestry,0.993337,spliced
+Arkansas,emission_sub_electric,1.012714,spliced
+Arkansas,emission_sub_commercial,0.972889,spliced
+Arkansas,emission_sub_residential,0.969299,spliced
+Arkansas,emission_sub_industrial,0.899966,spliced
+Arkansas,emission_sub_transportation,0.98931,spliced
+Arkansas,emission_sub_fugitive,2.366441,spliced
+California,total_emissions_excluding_lucf,0.941887,spliced
+California,total_emissions_including_lucf,0.992669,spliced
+California,total_co2,0.924265,spliced
+California,total_ch4,1.067939,spliced
+California,total_n2o,1.093029,spliced
+California,total_f_gas,0.900902,spliced
+California,emission_by_energy,0.925741,spliced
+California,emission_by_industrial,0.28103,spliced
+California,emission_by_agriculture,1.087038,spliced
+California,emission_by_waste,0.833229,spliced
+California,emission_by_forestry,0.563468,spliced
+California,emission_sub_electric,0.998727,spliced
+California,emission_sub_commercial,0.949549,spliced
+California,emission_sub_residential,0.986379,spliced
+California,emission_sub_industrial,0.989619,spliced
+California,emission_sub_transportation,0.869964,spliced
+California,emission_sub_fugitive,2.563091,spliced
+Colorado,total_emissions_excluding_lucf,1.046178,spliced
+Colorado,total_emissions_including_lucf,1.042629,spliced
+Colorado,total_co2,1.030805,spliced
+Colorado,total_ch4,0.969555,spliced
+Colorado,total_n2o,1.648956,spliced
+Colorado,total_f_gas,1.044325,spliced
+Colorado,emission_by_energy,0.894237,spliced
+Colorado,emission_by_industrial,0.460026,spliced
+Colorado,emission_by_agriculture,1.217922,spliced
+Colorado,emission_by_waste,0.816729,spliced
+Colorado,emission_by_forestry,0.976271,spliced
+Colorado,emission_sub_electric,1.015058,spliced
+Colorado,emission_sub_commercial,0.948773,spliced
+Colorado,emission_sub_residential,0.968255,spliced
+Colorado,emission_sub_industrial,0.979864,spliced
+Colorado,emission_sub_transportation,1.007783,spliced
+Colorado,emission_sub_fugitive,1.176239,spliced
+Connecticut,total_emissions_excluding_lucf,0.986738,spliced
+Connecticut,total_emissions_including_lucf,1.045824,spliced
+Connecticut,total_co2,0.978089,spliced
+Connecticut,total_ch4,1.215153,spliced
+Connecticut,total_n2o,1.554785,spliced
+Connecticut,total_f_gas,0.934635,spliced
+Connecticut,emission_by_energy,1.009516,spliced
+Connecticut,emission_by_industrial,0.238261,spliced
+Connecticut,emission_by_agriculture,1.125549,spliced
+Connecticut,emission_by_waste,0.761949,spliced
+Connecticut,emission_by_forestry,0.67719,spliced
+Connecticut,emission_sub_electric,0.995446,spliced
+Connecticut,emission_sub_commercial,0.960611,spliced
+Connecticut,emission_sub_residential,0.920075,spliced
+Connecticut,emission_sub_industrial,0.969964,spliced
+Connecticut,emission_sub_transportation,1.02286,spliced
+Connecticut,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.3455); left untouched"
+Delaware,total_emissions_excluding_lucf,1.060419,spliced
+Delaware,total_emissions_including_lucf,1.075595,spliced
+Delaware,total_co2,1.038748,spliced
+Delaware,total_ch4,2.01213,spliced
+Delaware,total_n2o,0.768628,spliced
+Delaware,total_f_gas,1.281049,spliced
+Delaware,emission_by_energy,1.033649,spliced
+Delaware,emission_by_industrial,0.168609,spliced
+Delaware,emission_by_agriculture,0.656763,spliced
+Delaware,emission_by_waste,2.007948,spliced
+Delaware,emission_by_forestry,0.813601,spliced
+Delaware,emission_sub_electric,1.000118,spliced
+Delaware,emission_sub_commercial,0.969249,spliced
+Delaware,emission_sub_residential,0.968645,spliced
+Delaware,emission_sub_industrial,0.976483,spliced
+Delaware,emission_sub_transportation,1.109217,spliced
+Delaware,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.1985); left untouched"
+Florida,total_emissions_excluding_lucf,1.040916,spliced
+Florida,total_emissions_including_lucf,1.100559,spliced
+Florida,total_co2,0.984555,spliced
+Florida,total_ch4,1.291724,spliced
+Florida,total_n2o,3.107488,spliced
+Florida,total_f_gas,0.921795,spliced
+Florida,emission_by_energy,1.011552,spliced
+Florida,emission_by_industrial,0.932447,spliced
+Florida,emission_by_agriculture,1.168768,spliced
+Florida,emission_by_waste,1.166756,spliced
+Florida,emission_by_forestry,0.232031,spliced
+Florida,emission_sub_electric,1.006172,spliced
+Florida,emission_sub_commercial,0.924449,spliced
+Florida,emission_sub_residential,0.996348,spliced
+Florida,emission_sub_industrial,0.972623,spliced
+Florida,emission_sub_transportation,0.971755,spliced
+Florida,emission_sub_fugitive,54.646186,spliced
+Georgia,total_emissions_excluding_lucf,1.082949,spliced
+Georgia,total_emissions_including_lucf,1.213726,spliced
+Georgia,total_co2,1.039184,spliced
+Georgia,total_ch4,2.283725,spliced
+Georgia,total_n2o,1.104762,spliced
+Georgia,total_f_gas,0.941296,spliced
+Georgia,emission_by_energy,1.049248,spliced
+Georgia,emission_by_industrial,0.316092,spliced
+Georgia,emission_by_agriculture,0.857493,spliced
+Georgia,emission_by_waste,3.188397,spliced
+Georgia,emission_by_forestry,0.826981,spliced
+Georgia,emission_sub_electric,1.016796,spliced
+Georgia,emission_sub_commercial,0.944988,spliced
+Georgia,emission_sub_residential,0.989753,spliced
+Georgia,emission_sub_industrial,0.864047,spliced
+Georgia,emission_sub_transportation,1.123377,spliced
+Georgia,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=1.3637); left untouched"
+Hawaii,total_emissions_excluding_lucf,0.837418,spliced
+Hawaii,total_emissions_including_lucf,0.700142,spliced
+Hawaii,total_co2,0.84514,spliced
+Hawaii,total_ch4,0.691261,spliced
+Hawaii,total_n2o,0.723842,spliced
+Hawaii,total_f_gas,0.925738,spliced
+Hawaii,emission_by_energy,0.875993,spliced
+Hawaii,emission_by_industrial,0.19025,spliced
+Hawaii,emission_by_agriculture,0.682277,spliced
+Hawaii,emission_by_waste,0.615888,spliced
+Hawaii,emission_by_forestry,1.0,"NO OVERLAP (WRI2018=0.372843067, EPA2018=-2.8285); left untouched"
+Hawaii,emission_sub_electric,1.003592,spliced
+Hawaii,emission_sub_commercial,0.697079,spliced
+Hawaii,emission_sub_residential,0.518933,spliced
+Hawaii,emission_sub_industrial,0.822364,spliced
+Hawaii,emission_sub_transportation,0.796148,spliced
+Hawaii,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.0266); left untouched"
+Idaho,total_emissions_excluding_lucf,1.023551,spliced
+Idaho,total_emissions_including_lucf,1.161625,spliced
+Idaho,total_co2,0.942791,spliced
+Idaho,total_ch4,1.130804,spliced
+Idaho,total_n2o,1.15172,spliced
+Idaho,total_f_gas,0.973261,spliced
+Idaho,emission_by_energy,0.946971,spliced
+Idaho,emission_by_industrial,1.0,"NO OVERLAP (WRI2018=1.527435514, EPA2018=-0.1217); left untouched"
+Idaho,emission_by_agriculture,1.11038,spliced
+Idaho,emission_by_waste,1.3794,spliced
+Idaho,emission_by_forestry,0.463933,spliced
+Idaho,emission_sub_electric,0.997445,spliced
+Idaho,emission_sub_commercial,0.953898,spliced
+Idaho,emission_sub_residential,0.932749,spliced
+Idaho,emission_sub_industrial,0.969957,spliced
+Idaho,emission_sub_transportation,0.89609,spliced
+Idaho,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.3438); left untouched"
+Illinois,total_emissions_excluding_lucf,0.961594,spliced
+Illinois,total_emissions_including_lucf,0.979278,spliced
+Illinois,total_co2,0.965273,spliced
+Illinois,total_ch4,1.158064,spliced
+Illinois,total_n2o,0.803158,spliced
+Illinois,total_f_gas,1.055593,spliced
+Illinois,emission_by_energy,0.962625,spliced
+Illinois,emission_by_industrial,0.224863,spliced
+Illinois,emission_by_agriculture,0.8105,spliced
+Illinois,emission_by_waste,0.771792,spliced
+Illinois,emission_by_forestry,0.721837,spliced
+Illinois,emission_sub_electric,1.02546,spliced
+Illinois,emission_sub_commercial,0.968835,spliced
+Illinois,emission_sub_residential,0.980365,spliced
+Illinois,emission_sub_industrial,0.891986,spliced
+Illinois,emission_sub_transportation,0.936172,spliced
+Illinois,emission_sub_fugitive,2.488057,spliced
+Indiana,total_emissions_excluding_lucf,0.953612,spliced
+Indiana,total_emissions_including_lucf,0.939557,spliced
+Indiana,total_co2,0.948258,spliced
+Indiana,total_ch4,1.324121,spliced
+Indiana,total_n2o,0.786187,spliced
+Indiana,total_f_gas,0.977756,spliced
+Indiana,emission_by_energy,1.00667,spliced
+Indiana,emission_by_industrial,0.647873,spliced
+Indiana,emission_by_agriculture,0.786099,spliced
+Indiana,emission_by_waste,1.360128,spliced
+Indiana,emission_by_forestry,1.330793,spliced
+Indiana,emission_sub_electric,1.03142,spliced
+Indiana,emission_sub_commercial,0.966532,spliced
+Indiana,emission_sub_residential,0.977693,spliced
+Indiana,emission_sub_industrial,0.788554,spliced
+Indiana,emission_sub_transportation,0.946549,spliced
+Indiana,emission_sub_fugitive,1.756796,spliced
+Iowa,total_emissions_excluding_lucf,0.967043,spliced
+Iowa,total_emissions_including_lucf,0.94403,spliced
+Iowa,total_co2,0.952339,spliced
+Iowa,total_ch4,1.15559,spliced
+Iowa,total_n2o,0.904786,spliced
+Iowa,total_f_gas,0.949775,spliced
+Iowa,emission_by_energy,0.985601,spliced
+Iowa,emission_by_industrial,0.363373,spliced
+Iowa,emission_by_agriculture,0.925835,spliced
+Iowa,emission_by_waste,1.502068,spliced
+Iowa,emission_by_forestry,1.286854,spliced
+Iowa,emission_sub_electric,1.011707,spliced
+Iowa,emission_sub_commercial,0.919092,spliced
+Iowa,emission_sub_residential,0.927747,spliced
+Iowa,emission_sub_industrial,0.782626,spliced
+Iowa,emission_sub_transportation,1.027178,spliced
+Iowa,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=1.5396); left untouched"
+Kansas,total_emissions_excluding_lucf,1.055969,spliced
+Kansas,total_emissions_including_lucf,1.04174,spliced
+Kansas,total_co2,0.948247,spliced
+Kansas,total_ch4,1.330479,spliced
+Kansas,total_n2o,1.125517,spliced
+Kansas,total_f_gas,0.968856,spliced
+Kansas,emission_by_energy,0.910769,spliced
+Kansas,emission_by_industrial,0.264059,spliced
+Kansas,emission_by_agriculture,1.051202,spliced
+Kansas,emission_by_waste,1.341732,spliced
+Kansas,emission_by_forestry,1.321958,spliced
+Kansas,emission_sub_electric,1.024855,spliced
+Kansas,emission_sub_commercial,0.970435,spliced
+Kansas,emission_sub_residential,0.987114,spliced
+Kansas,emission_sub_industrial,0.855959,spliced
+Kansas,emission_sub_transportation,0.897094,spliced
+Kansas,emission_sub_fugitive,2.290966,spliced
+Kentucky,total_emissions_excluding_lucf,1.040243,spliced
+Kentucky,total_emissions_including_lucf,1.014914,spliced
+Kentucky,total_co2,0.977045,spliced
+Kentucky,total_ch4,1.587643,spliced
+Kentucky,total_n2o,0.944007,spliced
+Kentucky,total_f_gas,2.201601,spliced
+Kentucky,emission_by_energy,0.98537,spliced
+Kentucky,emission_by_industrial,1.01426,spliced
+Kentucky,emission_by_agriculture,0.916432,spliced
+Kentucky,emission_by_waste,2.067497,spliced
+Kentucky,emission_by_forestry,1.190223,spliced
+Kentucky,emission_sub_electric,1.03031,spliced
+Kentucky,emission_sub_commercial,0.959069,spliced
+Kentucky,emission_sub_residential,0.97087,spliced
+Kentucky,emission_sub_industrial,0.938156,spliced
+Kentucky,emission_sub_transportation,0.906053,spliced
+Kentucky,emission_sub_fugitive,2.120751,spliced
+Louisiana,total_emissions_excluding_lucf,0.907513,spliced
+Louisiana,total_emissions_including_lucf,0.916502,spliced
+Louisiana,total_co2,0.844281,spliced
+Louisiana,total_ch4,1.75615,spliced
+Louisiana,total_n2o,1.505471,spliced
+Louisiana,total_f_gas,1.141981,spliced
+Louisiana,emission_by_energy,0.842966,spliced
+Louisiana,emission_by_industrial,1.626335,spliced
+Louisiana,emission_by_agriculture,1.320127,spliced
+Louisiana,emission_by_waste,1.444011,spliced
+Louisiana,emission_by_forestry,0.853733,spliced
+Louisiana,emission_sub_electric,1.002171,spliced
+Louisiana,emission_sub_commercial,0.960548,spliced
+Louisiana,emission_sub_residential,0.991519,spliced
+Louisiana,emission_sub_industrial,0.799562,spliced
+Louisiana,emission_sub_transportation,0.639066,spliced
+Louisiana,emission_sub_fugitive,2.547664,spliced
+Maine,total_emissions_excluding_lucf,0.980255,spliced
+Maine,total_emissions_including_lucf,61.558853,spliced
+Maine,total_co2,0.935118,spliced
+Maine,total_ch4,1.710831,spliced
+Maine,total_n2o,1.27044,spliced
+Maine,total_f_gas,1.123507,spliced
+Maine,emission_by_energy,0.945701,spliced
+Maine,emission_by_industrial,0.48877,spliced
+Maine,emission_by_agriculture,1.202325,spliced
+Maine,emission_by_waste,2.416091,spliced
+Maine,emission_by_forestry,1.062573,spliced
+Maine,emission_sub_electric,0.956858,spliced
+Maine,emission_sub_commercial,0.926095,spliced
+Maine,emission_sub_residential,0.854045,spliced
+Maine,emission_sub_industrial,0.883441,spliced
+Maine,emission_sub_transportation,0.937897,spliced
+Maine,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.1019); left untouched"
+Maryland,total_emissions_excluding_lucf,1.015925,spliced
+Maryland,total_emissions_including_lucf,0.991841,spliced
+Maryland,total_co2,1.033468,spliced
+Maryland,total_ch4,0.790931,spliced
+Maryland,total_n2o,1.038774,spliced
+Maryland,total_f_gas,0.935716,spliced
+Maryland,emission_by_energy,1.054887,spliced
+Maryland,emission_by_industrial,0.503304,spliced
+Maryland,emission_by_agriculture,0.81104,spliced
+Maryland,emission_by_waste,0.701572,spliced
+Maryland,emission_by_forestry,1.29659,spliced
+Maryland,emission_sub_electric,1.01438,spliced
+Maryland,emission_sub_commercial,0.958882,spliced
+Maryland,emission_sub_residential,0.964137,spliced
+Maryland,emission_sub_industrial,0.955333,spliced
+Maryland,emission_sub_transportation,1.06166,spliced
+Maryland,emission_sub_fugitive,8.16477,spliced
+Massachusetts,total_emissions_excluding_lucf,0.977609,spliced
+Massachusetts,total_emissions_including_lucf,1.016059,spliced
+Massachusetts,total_co2,0.977745,spliced
+Massachusetts,total_ch4,0.967666,spliced
+Massachusetts,total_n2o,1.557178,spliced
+Massachusetts,total_f_gas,0.877414,spliced
+Massachusetts,emission_by_energy,0.997787,spliced
+Massachusetts,emission_by_industrial,0.289582,spliced
+Massachusetts,emission_by_agriculture,0.940438,spliced
+Massachusetts,emission_by_waste,0.775674,spliced
+Massachusetts,emission_by_forestry,0.716837,spliced
+Massachusetts,emission_sub_electric,0.994531,spliced
+Massachusetts,emission_sub_commercial,0.970655,spliced
+Massachusetts,emission_sub_residential,0.935222,spliced
+Massachusetts,emission_sub_industrial,0.970224,spliced
+Massachusetts,emission_sub_transportation,0.989375,spliced
+Massachusetts,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.8331); left untouched"
+Michigan,total_emissions_excluding_lucf,1.027587,spliced
+Michigan,total_emissions_including_lucf,1.027375,spliced
+Michigan,total_co2,0.997997,spliced
+Michigan,total_ch4,1.612918,spliced
+Michigan,total_n2o,0.982697,spliced
+Michigan,total_f_gas,0.932385,spliced
+Michigan,emission_by_energy,1.022515,spliced
+Michigan,emission_by_industrial,0.842377,spliced
+Michigan,emission_by_agriculture,0.936378,spliced
+Michigan,emission_by_waste,1.687192,spliced
+Michigan,emission_by_forestry,1.029442,spliced
+Michigan,emission_sub_electric,1.018945,spliced
+Michigan,emission_sub_commercial,0.973825,spliced
+Michigan,emission_sub_residential,0.980024,spliced
+Michigan,emission_sub_industrial,0.777904,spliced
+Michigan,emission_sub_transportation,0.992318,spliced
+Michigan,emission_sub_fugitive,3.897492,spliced
+Minnesota,total_emissions_excluding_lucf,1.127669,spliced
+Minnesota,total_emissions_including_lucf,1.131713,spliced
+Minnesota,total_co2,1.148031,spliced
+Minnesota,total_ch4,1.22871,spliced
+Minnesota,total_n2o,1.000768,spliced
+Minnesota,total_f_gas,1.028992,spliced
+Minnesota,emission_by_energy,1.158538,spliced
+Minnesota,emission_by_industrial,4.163877,spliced
+Minnesota,emission_by_agriculture,1.024537,spliced
+Minnesota,emission_by_waste,1.009907,spliced
+Minnesota,emission_by_forestry,1.079027,spliced
+Minnesota,emission_sub_electric,1.014864,spliced
+Minnesota,emission_sub_commercial,0.96001,spliced
+Minnesota,emission_sub_residential,0.97704,spliced
+Minnesota,emission_sub_industrial,0.81697,spliced
+Minnesota,emission_sub_transportation,1.037206,spliced
+Minnesota,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=1.3264); left untouched"
+Mississippi,total_emissions_excluding_lucf,0.932137,spliced
+Mississippi,total_emissions_including_lucf,0.868993,spliced
+Mississippi,total_co2,0.883106,spliced
+Mississippi,total_ch4,1.469728,spliced
+Mississippi,total_n2o,1.053408,spliced
+Mississippi,total_f_gas,0.931287,spliced
+Mississippi,emission_by_energy,0.905221,spliced
+Mississippi,emission_by_industrial,0.457334,spliced
+Mississippi,emission_by_agriculture,0.918641,spliced
+Mississippi,emission_by_waste,1.343227,spliced
+Mississippi,emission_by_forestry,0.944849,spliced
+Mississippi,emission_sub_electric,1.003286,spliced
+Mississippi,emission_sub_commercial,0.954516,spliced
+Mississippi,emission_sub_residential,0.986586,spliced
+Mississippi,emission_sub_industrial,0.93096,spliced
+Mississippi,emission_sub_transportation,0.776881,spliced
+Mississippi,emission_sub_fugitive,3.60216,spliced
+Missouri,total_emissions_excluding_lucf,1.013497,spliced
+Missouri,total_emissions_including_lucf,0.994172,spliced
+Missouri,total_co2,1.017242,spliced
+Missouri,total_ch4,1.069917,spliced
+Missouri,total_n2o,0.972498,spliced
+Missouri,total_f_gas,0.859743,spliced
+Missouri,emission_by_energy,1.065263,spliced
+Missouri,emission_by_industrial,0.613369,spliced
+Missouri,emission_by_agriculture,0.987378,spliced
+Missouri,emission_by_waste,0.695879,spliced
+Missouri,emission_by_forestry,1.152042,spliced
+Missouri,emission_sub_electric,1.023501,spliced
+Missouri,emission_sub_commercial,0.964179,spliced
+Missouri,emission_sub_residential,0.975056,spliced
+Missouri,emission_sub_industrial,0.95594,spliced
+Missouri,emission_sub_transportation,1.011826,spliced
+Missouri,emission_sub_fugitive,104.285557,spliced
+Montana,total_emissions_excluding_lucf,1.17217,spliced
+Montana,total_emissions_including_lucf,1.455442,spliced
+Montana,total_co2,1.006102,spliced
+Montana,total_ch4,1.067748,spliced
+Montana,total_n2o,2.18839,spliced
+Montana,total_f_gas,0.77854,spliced
+Montana,emission_by_energy,0.950155,spliced
+Montana,emission_by_industrial,0.106005,spliced
+Montana,emission_by_agriculture,1.674063,spliced
+Montana,emission_by_waste,0.880567,spliced
+Montana,emission_by_forestry,3.542766,spliced
+Montana,emission_sub_electric,1.015631,spliced
+Montana,emission_sub_commercial,0.976361,spliced
+Montana,emission_sub_residential,0.931409,spliced
+Montana,emission_sub_industrial,0.967751,spliced
+Montana,emission_sub_transportation,0.940453,spliced
+Montana,emission_sub_fugitive,1.357587,spliced
+Nebraska,total_emissions_excluding_lucf,0.976951,spliced
+Nebraska,total_emissions_including_lucf,0.98804,spliced
+Nebraska,total_co2,0.964347,spliced
+Nebraska,total_ch4,1.097291,spliced
+Nebraska,total_n2o,0.922999,spliced
+Nebraska,total_f_gas,0.998476,spliced
+Nebraska,emission_by_energy,0.979733,spliced
+Nebraska,emission_by_industrial,1.0,"NO OVERLAP (WRI2018=2.241136178, EPA2018=-0.8337); left untouched"
+Nebraska,emission_by_agriculture,0.929803,spliced
+Nebraska,emission_by_waste,2.584393,spliced
+Nebraska,emission_by_forestry,0.785948,spliced
+Nebraska,emission_sub_electric,1.018155,spliced
+Nebraska,emission_sub_commercial,0.970814,spliced
+Nebraska,emission_sub_residential,0.984081,spliced
+Nebraska,emission_sub_industrial,0.94041,spliced
+Nebraska,emission_sub_transportation,0.892072,spliced
+Nebraska,emission_sub_fugitive,22.307748,spliced
+Nevada,total_emissions_excluding_lucf,1.058838,spliced
+Nevada,total_emissions_including_lucf,1.133724,spliced
+Nevada,total_co2,1.062745,spliced
+Nevada,total_ch4,0.817734,spliced
+Nevada,total_n2o,1.816931,spliced
+Nevada,total_f_gas,0.934345,spliced
+Nevada,emission_by_energy,1.07831,spliced
+Nevada,emission_by_industrial,0.617398,spliced
+Nevada,emission_by_agriculture,1.302747,spliced
+Nevada,emission_by_waste,0.389877,spliced
+Nevada,emission_by_forestry,1.0,"NO OVERLAP (WRI2018=-2.240201235, EPA2018=0.7593); left untouched"
+Nevada,emission_sub_electric,1.003403,spliced
+Nevada,emission_sub_commercial,0.958593,spliced
+Nevada,emission_sub_residential,0.983601,spliced
+Nevada,emission_sub_industrial,0.960433,spliced
+Nevada,emission_sub_transportation,1.127211,spliced
+Nevada,emission_sub_fugitive,240.939383,spliced
+New Hampshire,total_emissions_excluding_lucf,1.028825,spliced
+New Hampshire,total_emissions_including_lucf,1.133947,spliced
+New Hampshire,total_co2,0.987033,spliced
+New Hampshire,total_ch4,2.424615,spliced
+New Hampshire,total_n2o,1.210295,spliced
+New Hampshire,total_f_gas,0.995658,spliced
+New Hampshire,emission_by_energy,0.978422,spliced
+New Hampshire,emission_by_industrial,0.399192,spliced
+New Hampshire,emission_by_agriculture,1.087523,spliced
+New Hampshire,emission_by_waste,2.577427,spliced
+New Hampshire,emission_by_forestry,0.91379,spliced
+New Hampshire,emission_sub_electric,0.990807,spliced
+New Hampshire,emission_sub_commercial,0.942262,spliced
+New Hampshire,emission_sub_residential,0.888735,spliced
+New Hampshire,emission_sub_industrial,0.951416,spliced
+New Hampshire,emission_sub_transportation,0.98968,spliced
+New Hampshire,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.0860); left untouched"
+New Jersey,total_emissions_excluding_lucf,0.92063,spliced
+New Jersey,total_emissions_including_lucf,0.921197,spliced
+New Jersey,total_co2,0.911576,spliced
+New Jersey,total_ch4,0.901146,spliced
+New Jersey,total_n2o,1.483196,spliced
+New Jersey,total_f_gas,1.015069,spliced
+New Jersey,emission_by_energy,0.917864,spliced
+New Jersey,emission_by_industrial,0.354019,spliced
+New Jersey,emission_by_agriculture,0.868964,spliced
+New Jersey,emission_by_waste,0.725593,spliced
+New Jersey,emission_by_forestry,0.910549,spliced
+New Jersey,emission_sub_electric,0.997543,spliced
+New Jersey,emission_sub_commercial,0.97342,spliced
+New Jersey,emission_sub_residential,0.976878,spliced
+New Jersey,emission_sub_industrial,0.959686,spliced
+New Jersey,emission_sub_transportation,0.842144,spliced
+New Jersey,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=1.3421); left untouched"
+New Mexico,total_emissions_excluding_lucf,1.044278,spliced
+New Mexico,total_emissions_including_lucf,1.001967,spliced
+New Mexico,total_co2,1.040293,spliced
+New Mexico,total_ch4,0.905827,spliced
+New Mexico,total_n2o,2.916805,spliced
+New Mexico,total_f_gas,0.496635,spliced
+New Mexico,emission_by_energy,0.793329,spliced
+New Mexico,emission_by_industrial,0.238209,spliced
+New Mexico,emission_by_agriculture,1.654195,spliced
+New Mexico,emission_by_waste,0.824857,spliced
+New Mexico,emission_by_forestry,0.679118,spliced
+New Mexico,emission_sub_electric,1.011022,spliced
+New Mexico,emission_sub_commercial,0.968622,spliced
+New Mexico,emission_sub_residential,0.955493,spliced
+New Mexico,emission_sub_industrial,0.99233,spliced
+New Mexico,emission_sub_transportation,0.968724,spliced
+New Mexico,emission_sub_fugitive,1.021651,spliced
+New York,total_emissions_excluding_lucf,0.988615,spliced
+New York,total_emissions_including_lucf,0.942396,spliced
+New York,total_co2,0.984699,spliced
+New York,total_ch4,0.971547,spliced
+New York,total_n2o,1.284396,spliced
+New York,total_f_gas,0.943267,spliced
+New York,emission_by_energy,0.990695,spliced
+New York,emission_by_industrial,0.344502,spliced
+New York,emission_by_agriculture,1.069567,spliced
+New York,emission_by_waste,0.635234,spliced
+New York,emission_by_forestry,1.267265,spliced
+New York,emission_sub_electric,0.995386,spliced
+New York,emission_sub_commercial,0.965158,spliced
+New York,emission_sub_residential,0.958589,spliced
+New York,emission_sub_industrial,0.939278,spliced
+New York,emission_sub_transportation,0.99188,spliced
+New York,emission_sub_fugitive,6.639333,spliced
+North Carolina,total_emissions_excluding_lucf,1.051599,spliced
+North Carolina,total_emissions_including_lucf,1.143003,spliced
+North Carolina,total_co2,1.035418,spliced
+North Carolina,total_ch4,1.367657,spliced
+North Carolina,total_n2o,0.886002,spliced
+North Carolina,total_f_gas,0.971204,spliced
+North Carolina,emission_by_energy,1.035108,spliced
+North Carolina,emission_by_industrial,0.29944,spliced
+North Carolina,emission_by_agriculture,0.895232,spliced
+North Carolina,emission_by_waste,1.657539,spliced
+North Carolina,emission_by_forestry,0.86306,spliced
+North Carolina,emission_sub_electric,1.016303,spliced
+North Carolina,emission_sub_commercial,0.951451,spliced
+North Carolina,emission_sub_residential,0.974697,spliced
+North Carolina,emission_sub_industrial,0.944845,spliced
+North Carolina,emission_sub_transportation,1.080172,spliced
+North Carolina,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=1.1117); left untouched"
+North Dakota,total_emissions_excluding_lucf,1.047957,spliced
+North Dakota,total_emissions_including_lucf,1.121179,spliced
+North Dakota,total_co2,1.175434,spliced
+North Dakota,total_ch4,0.526646,spliced
+North Dakota,total_n2o,1.051801,spliced
+North Dakota,total_f_gas,1.207645,spliced
+North Dakota,emission_by_energy,0.998177,spliced
+North Dakota,emission_by_industrial,1.0,"NO OVERLAP (WRI2018=0.849768407, EPA2018=-0.9305); left untouched"
+North Dakota,emission_by_agriculture,1.05341,spliced
+North Dakota,emission_by_waste,1.078206,spliced
+North Dakota,emission_by_forestry,0.065297,spliced
+North Dakota,emission_sub_electric,0.968183,spliced
+North Dakota,emission_sub_commercial,0.915831,spliced
+North Dakota,emission_sub_residential,0.939319,spliced
+North Dakota,emission_sub_industrial,1.309016,spliced
+North Dakota,emission_sub_transportation,0.892779,spliced
+North Dakota,emission_sub_fugitive,1.084188,spliced
+Ohio,total_emissions_excluding_lucf,1.002445,spliced
+Ohio,total_emissions_including_lucf,0.982084,spliced
+Ohio,total_co2,0.962656,spliced
+Ohio,total_ch4,1.81876,spliced
+Ohio,total_n2o,0.862962,spliced
+Ohio,total_f_gas,0.932254,spliced
+Ohio,emission_by_energy,0.98234,spliced
+Ohio,emission_by_industrial,0.420405,spliced
+Ohio,emission_by_agriculture,0.822548,spliced
+Ohio,emission_by_waste,1.268159,spliced
+Ohio,emission_by_forestry,1.367926,spliced
+Ohio,emission_sub_electric,1.023897,spliced
+Ohio,emission_sub_commercial,0.966745,spliced
+Ohio,emission_sub_residential,0.980134,spliced
+Ohio,emission_sub_industrial,0.794895,spliced
+Ohio,emission_sub_transportation,0.978652,spliced
+Ohio,emission_sub_fugitive,4.169999,spliced
+Oklahoma,total_emissions_excluding_lucf,1.087776,spliced
+Oklahoma,total_emissions_including_lucf,1.097255,spliced
+Oklahoma,total_co2,0.988562,spliced
+Oklahoma,total_ch4,1.37755,spliced
+Oklahoma,total_n2o,1.370078,spliced
+Oklahoma,total_f_gas,1.12927,spliced
+Oklahoma,emission_by_energy,0.903706,spliced
+Oklahoma,emission_by_industrial,0.962694,spliced
+Oklahoma,emission_by_agriculture,1.052297,spliced
+Oklahoma,emission_by_waste,1.119062,spliced
+Oklahoma,emission_by_forestry,0.960174,spliced
+Oklahoma,emission_sub_electric,1.021755,spliced
+Oklahoma,emission_sub_commercial,0.966971,spliced
+Oklahoma,emission_sub_residential,0.987247,spliced
+Oklahoma,emission_sub_industrial,0.850991,spliced
+Oklahoma,emission_sub_transportation,0.946127,spliced
+Oklahoma,emission_sub_fugitive,2.047834,spliced
+Oregon,total_emissions_excluding_lucf,1.007347,spliced
+Oregon,total_emissions_including_lucf,4.066225,spliced
+Oregon,total_co2,0.982868,spliced
+Oregon,total_ch4,1.310469,spliced
+Oregon,total_n2o,1.151753,spliced
+Oregon,total_f_gas,0.746737,spliced
+Oregon,emission_by_energy,0.993953,spliced
+Oregon,emission_by_industrial,0.286884,spliced
+Oregon,emission_by_agriculture,1.082692,spliced
+Oregon,emission_by_waste,1.474465,spliced
+Oregon,emission_by_forestry,0.827595,spliced
+Oregon,emission_sub_electric,1.002136,spliced
+Oregon,emission_sub_commercial,0.946949,spliced
+Oregon,emission_sub_residential,0.921974,spliced
+Oregon,emission_sub_industrial,0.939656,spliced
+Oregon,emission_sub_transportation,0.984472,spliced
+Oregon,emission_sub_fugitive,148.880056,spliced
+Pennsylvania,total_emissions_excluding_lucf,1.052722,spliced
+Pennsylvania,total_emissions_including_lucf,1.051281,spliced
+Pennsylvania,total_co2,0.95799,spliced
+Pennsylvania,total_ch4,1.90312,spliced
+Pennsylvania,total_n2o,1.062934,spliced
+Pennsylvania,total_f_gas,1.112873,spliced
+Pennsylvania,emission_by_energy,0.915928,spliced
+Pennsylvania,emission_by_industrial,0.498745,spliced
+Pennsylvania,emission_by_agriculture,0.974137,spliced
+Pennsylvania,emission_by_waste,1.580385,spliced
+Pennsylvania,emission_by_forestry,1.064233,spliced
+Pennsylvania,emission_sub_electric,1.020015,spliced
+Pennsylvania,emission_sub_commercial,0.960329,spliced
+Pennsylvania,emission_sub_residential,0.944297,spliced
+Pennsylvania,emission_sub_industrial,0.77551,spliced
+Pennsylvania,emission_sub_transportation,0.961938,spliced
+Pennsylvania,emission_sub_fugitive,2.450307,spliced
+Rhode Island,total_emissions_excluding_lucf,0.974665,spliced
+Rhode Island,total_emissions_including_lucf,1.017312,spliced
+Rhode Island,total_co2,0.951419,spliced
+Rhode Island,total_ch4,2.124346,spliced
+Rhode Island,total_n2o,1.585101,spliced
+Rhode Island,total_f_gas,0.932695,spliced
+Rhode Island,emission_by_energy,0.96681,spliced
+Rhode Island,emission_by_industrial,0.203499,spliced
+Rhode Island,emission_by_agriculture,0.637846,spliced
+Rhode Island,emission_by_waste,1.662338,spliced
+Rhode Island,emission_by_forestry,0.486039,spliced
+Rhode Island,emission_sub_electric,0.994792,spliced
+Rhode Island,emission_sub_commercial,0.958691,spliced
+Rhode Island,emission_sub_residential,0.931375,spliced
+Rhode Island,emission_sub_industrial,1.006309,spliced
+Rhode Island,emission_sub_transportation,0.95746,spliced
+Rhode Island,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.1413); left untouched"
+South Carolina,total_emissions_excluding_lucf,1.00435,spliced
+South Carolina,total_emissions_including_lucf,1.063619,spliced
+South Carolina,total_co2,0.982973,spliced
+South Carolina,total_ch4,1.436108,spliced
+South Carolina,total_n2o,1.188754,spliced
+South Carolina,total_f_gas,0.985267,spliced
+South Carolina,emission_by_energy,1.00837,spliced
+South Carolina,emission_by_industrial,0.539539,spliced
+South Carolina,emission_by_agriculture,0.971362,spliced
+South Carolina,emission_by_waste,1.285174,spliced
+South Carolina,emission_by_forestry,0.862818,spliced
+South Carolina,emission_sub_electric,1.021535,spliced
+South Carolina,emission_sub_commercial,0.948941,spliced
+South Carolina,emission_sub_residential,1.020233,spliced
+South Carolina,emission_sub_industrial,0.889491,spliced
+South Carolina,emission_sub_transportation,0.97946,spliced
+South Carolina,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.6996); left untouched"
+South Dakota,total_emissions_excluding_lucf,1.065563,spliced
+South Dakota,total_emissions_including_lucf,1.178488,spliced
+South Dakota,total_co2,1.022586,spliced
+South Dakota,total_ch4,1.086881,spliced
+South Dakota,total_n2o,1.095155,spliced
+South Dakota,total_f_gas,1.06574,spliced
+South Dakota,emission_by_energy,1.057833,spliced
+South Dakota,emission_by_industrial,1.0,"NO OVERLAP (WRI2018=1.142577611, EPA2018=-0.2147); left untouched"
+South Dakota,emission_by_agriculture,1.091453,spliced
+South Dakota,emission_by_waste,1.551126,spliced
+South Dakota,emission_by_forestry,1.0,"NO OVERLAP (WRI2018=-4.049822788, EPA2018=0.0478); left untouched"
+South Dakota,emission_sub_electric,1.015866,spliced
+South Dakota,emission_sub_commercial,0.974747,spliced
+South Dakota,emission_sub_residential,0.974835,spliced
+South Dakota,emission_sub_industrial,0.989965,spliced
+South Dakota,emission_sub_transportation,1.013338,spliced
+South Dakota,emission_sub_fugitive,10.517386,spliced
+Tennessee,total_emissions_excluding_lucf,0.93053,spliced
+Tennessee,total_emissions_including_lucf,0.828738,spliced
+Tennessee,total_co2,0.926199,spliced
+Tennessee,total_ch4,1.229465,spliced
+Tennessee,total_n2o,0.704652,spliced
+Tennessee,total_f_gas,0.941531,spliced
+Tennessee,emission_by_energy,0.962685,spliced
+Tennessee,emission_by_industrial,0.290565,spliced
+Tennessee,emission_by_agriculture,0.755225,spliced
+Tennessee,emission_by_waste,1.052043,spliced
+Tennessee,emission_by_forestry,1.268386,spliced
+Tennessee,emission_sub_electric,1.027081,spliced
+Tennessee,emission_sub_commercial,0.96206,spliced
+Tennessee,emission_sub_residential,0.985296,spliced
+Tennessee,emission_sub_industrial,0.842903,spliced
+Tennessee,emission_sub_transportation,0.934021,spliced
+Tennessee,emission_sub_fugitive,18.206466,spliced
+Texas,total_emissions_excluding_lucf,0.964154,spliced
+Texas,total_emissions_including_lucf,0.943566,spliced
+Texas,total_co2,0.940926,spliced
+Texas,total_ch4,0.999467,spliced
+Texas,total_n2o,1.523736,spliced
+Texas,total_f_gas,0.967746,spliced
+Texas,emission_by_energy,0.880838,spliced
+Texas,emission_by_industrial,1.260834,spliced
+Texas,emission_by_agriculture,1.205872,spliced
+Texas,emission_by_waste,1.043443,spliced
+Texas,emission_by_forestry,1.65946,spliced
+Texas,emission_sub_electric,1.001567,spliced
+Texas,emission_sub_commercial,0.965619,spliced
+Texas,emission_sub_residential,0.992581,spliced
+Texas,emission_sub_industrial,0.860311,spliced
+Texas,emission_sub_transportation,0.833854,spliced
+Texas,emission_sub_fugitive,1.139215,spliced
+Utah,total_emissions_excluding_lucf,1.059981,spliced
+Utah,total_emissions_including_lucf,1.139321,spliced
+Utah,total_co2,1.022006,spliced
+Utah,total_ch4,1.247967,spliced
+Utah,total_n2o,1.656432,spliced
+Utah,total_f_gas,1.050833,spliced
+Utah,emission_by_energy,0.985163,spliced
+Utah,emission_by_industrial,0.638163,spliced
+Utah,emission_by_agriculture,1.212402,spliced
+Utah,emission_by_waste,1.186167,spliced
+Utah,emission_by_forestry,1.0,"NO OVERLAP (WRI2018=-2.242966357, EPA2018=3.0826); left untouched"
+Utah,emission_sub_electric,1.032577,spliced
+Utah,emission_sub_commercial,0.974502,spliced
+Utah,emission_sub_residential,0.984388,spliced
+Utah,emission_sub_industrial,0.982606,spliced
+Utah,emission_sub_transportation,0.984938,spliced
+Utah,emission_sub_fugitive,1.631901,spliced
+Vermont,total_emissions_excluding_lucf,1.059111,spliced
+Vermont,total_emissions_including_lucf,1.212626,spliced
+Vermont,total_co2,0.994085,spliced
+Vermont,total_ch4,1.273247,spliced
+Vermont,total_n2o,0.884503,spliced
+Vermont,total_f_gas,1.825122,spliced
+Vermont,emission_by_energy,0.969901,spliced
+Vermont,emission_by_industrial,0.574956,spliced
+Vermont,emission_by_agriculture,1.023586,spliced
+Vermont,emission_by_waste,2.172708,spliced
+Vermont,emission_by_forestry,0.996656,spliced
+Vermont,emission_sub_electric,0.267057,spliced
+Vermont,emission_sub_commercial,0.934351,spliced
+Vermont,emission_sub_residential,0.858037,spliced
+Vermont,emission_sub_industrial,0.900164,spliced
+Vermont,emission_sub_transportation,0.990789,spliced
+Vermont,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.0305); left untouched"
+Virginia,total_emissions_excluding_lucf,1.022612,spliced
+Virginia,total_emissions_including_lucf,1.154399,spliced
+Virginia,total_co2,0.998877,spliced
+Virginia,total_ch4,1.28169,spliced
+Virginia,total_n2o,1.048458,spliced
+Virginia,total_f_gas,0.903024,spliced
+Virginia,emission_by_energy,0.972722,spliced
+Virginia,emission_by_industrial,0.459864,spliced
+Virginia,emission_by_agriculture,0.896911,spliced
+Virginia,emission_by_waste,1.512002,spliced
+Virginia,emission_by_forestry,0.829246,spliced
+Virginia,emission_sub_electric,1.004748,spliced
+Virginia,emission_sub_commercial,0.953752,spliced
+Virginia,emission_sub_residential,0.962395,spliced
+Virginia,emission_sub_industrial,0.758815,spliced
+Virginia,emission_sub_transportation,1.05844,spliced
+Virginia,emission_sub_fugitive,1.26907,spliced
+Washington,total_emissions_excluding_lucf,0.924824,spliced
+Washington,total_emissions_including_lucf,1.060948,spliced
+Washington,total_co2,0.877664,spliced
+Washington,total_ch4,1.227881,spliced
+Washington,total_n2o,1.318913,spliced
+Washington,total_f_gas,0.984514,spliced
+Washington,emission_by_energy,0.882245,spliced
+Washington,emission_by_industrial,0.312891,spliced
+Washington,emission_by_agriculture,1.161137,spliced
+Washington,emission_by_waste,1.27971,spliced
+Washington,emission_by_forestry,0.645902,spliced
+Washington,emission_sub_electric,1.007141,spliced
+Washington,emission_sub_commercial,0.951072,spliced
+Washington,emission_sub_residential,0.950267,spliced
+Washington,emission_sub_industrial,0.948097,spliced
+Washington,emission_sub_transportation,0.804215,spliced
+Washington,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.7667); left untouched"
+West Virginia,total_emissions_excluding_lucf,1.078703,spliced
+West Virginia,total_emissions_including_lucf,0.968622,spliced
+West Virginia,total_co2,1.021538,spliced
+West Virginia,total_ch4,1.259343,spliced
+West Virginia,total_n2o,1.79858,spliced
+West Virginia,total_f_gas,1.193063,spliced
+West Virginia,emission_by_energy,0.83692,spliced
+West Virginia,emission_by_industrial,0.473786,spliced
+West Virginia,emission_by_agriculture,1.08751,spliced
+West Virginia,emission_by_waste,0.84,spliced
+West Virginia,emission_by_forestry,1.783239,spliced
+West Virginia,emission_sub_electric,1.023435,spliced
+West Virginia,emission_sub_commercial,0.962148,spliced
+West Virginia,emission_sub_residential,0.945163,spliced
+West Virginia,emission_sub_industrial,0.886729,spliced
+West Virginia,emission_sub_transportation,1.026372,spliced
+West Virginia,emission_sub_fugitive,1.406548,spliced
+Wisconsin,total_emissions_excluding_lucf,1.035795,spliced
+Wisconsin,total_emissions_including_lucf,1.006391,spliced
+Wisconsin,total_co2,1.005301,spliced
+Wisconsin,total_ch4,1.329313,spliced
+Wisconsin,total_n2o,1.006231,spliced
+Wisconsin,total_f_gas,0.949116,spliced
+Wisconsin,emission_by_energy,1.008277,spliced
+Wisconsin,emission_by_industrial,0.121995,spliced
+Wisconsin,emission_by_agriculture,1.042572,spliced
+Wisconsin,emission_by_waste,2.163425,spliced
+Wisconsin,emission_by_forestry,1.207068,spliced
+Wisconsin,emission_sub_electric,1.01608,spliced
+Wisconsin,emission_sub_commercial,0.97304,spliced
+Wisconsin,emission_sub_residential,0.967255,spliced
+Wisconsin,emission_sub_industrial,0.969139,spliced
+Wisconsin,emission_sub_transportation,1.00664,spliced
+Wisconsin,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=1.2549); left untouched"
+Wyoming,total_emissions_excluding_lucf,1.052876,spliced
+Wyoming,total_emissions_including_lucf,0.970104,spliced
+Wyoming,total_co2,1.017239,spliced
+Wyoming,total_ch4,1.041178,spliced
+Wyoming,total_n2o,1.775274,spliced
+Wyoming,total_f_gas,1.109059,spliced
+Wyoming,emission_by_energy,0.861098,spliced
+Wyoming,emission_by_industrial,0.774003,spliced
+Wyoming,emission_by_agriculture,1.401023,spliced
+Wyoming,emission_by_waste,0.558041,spliced
+Wyoming,emission_by_forestry,0.310891,spliced
+Wyoming,emission_sub_electric,1.018847,spliced
+Wyoming,emission_sub_commercial,0.971767,spliced
+Wyoming,emission_sub_residential,0.959656,spliced
+Wyoming,emission_sub_industrial,0.94553,spliced
+Wyoming,emission_sub_transportation,0.920296,spliced
+Wyoming,emission_sub_fugitive,1.177001,spliced
+District Of Columbia,total_emissions_excluding_lucf,1.125791,spliced
+District Of Columbia,total_emissions_including_lucf,1.134614,spliced
+District Of Columbia,total_co2,1.170567,spliced
+District Of Columbia,total_ch4,1.284155,spliced
+District Of Columbia,total_n2o,2.221287,spliced
+District Of Columbia,total_f_gas,0.757959,spliced
+District Of Columbia,emission_by_energy,1.261642,spliced
+District Of Columbia,emission_by_industrial,0.144936,spliced
+District Of Columbia,emission_by_agriculture,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.0014); left untouched"
+District Of Columbia,emission_by_waste,0.934592,spliced
+District Of Columbia,emission_by_forestry,0.59023,spliced
+District Of Columbia,emission_sub_electric,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.0001); left untouched"
+District Of Columbia,emission_sub_commercial,0.983672,spliced
+District Of Columbia,emission_sub_residential,0.984378,spliced
+District Of Columbia,emission_sub_industrial,1.138782,spliced
+District Of Columbia,emission_sub_transportation,1.683995,spliced
+District Of Columbia,emission_sub_fugitive,1.0,"NO OVERLAP (WRI2018=0.0, EPA2018=0.0534); left untouched"
+United States,total_emissions_excluding_lucf,n/a (sum of states),national = column-wise sum of states
+United States,total_emissions_including_lucf,n/a (sum of states),national = column-wise sum of states
+United States,total_co2,n/a (sum of states),national = column-wise sum of states
+United States,total_ch4,n/a (sum of states),national = column-wise sum of states
+United States,total_n2o,n/a (sum of states),national = column-wise sum of states
+United States,total_f_gas,n/a (sum of states),national = column-wise sum of states
+United States,emission_by_energy,n/a (sum of states),national = column-wise sum of states
+United States,emission_by_industrial,n/a (sum of states),national = column-wise sum of states
+United States,emission_by_agriculture,n/a (sum of states),national = column-wise sum of states
+United States,emission_by_waste,n/a (sum of states),national = column-wise sum of states
+United States,emission_by_forestry,n/a (sum of states),national = column-wise sum of states
+United States,emission_sub_electric,n/a (sum of states),national = column-wise sum of states
+United States,emission_sub_commercial,n/a (sum of states),national = column-wise sum of states
+United States,emission_sub_residential,n/a (sum of states),national = column-wise sum of states
+United States,emission_sub_industrial,n/a (sum of states),national = column-wise sum of states
+United States,emission_sub_transportation,n/a (sum of states),national = column-wise sum of states
+United States,emission_sub_fugitive,n/a (sum of states),national = column-wise sum of states
