@@ -16,6 +16,7 @@ import AlreadyElectrifiedChart from "./already-electrified-chart"
 import PowerSourcesChart from "./power-sources-chart"
 import DisplayPlants from "./display-plants"
 import Link from "./link"
+import DataFreshness from "./data-freshness"
 
 /**
  * Images - suffix with Img for clarity from actual JS files/variables
@@ -91,14 +92,21 @@ export default function StateDetailsPage({ stateSlug, data }) {
 
   // #### EMISSIONS ####
   const emissionsByYear = data.allEmissionsJson.edges[0].node.emissionsByYear
-  const latestEmissions = emissionsByYear[emissionsByYear.length - 1]
+  const latestReportYear = emissionsByYear[emissionsByYear.length - 1].year
+
+  // Which reporting year the "snapshot" (sector breakdown, shares and the
+  // narrative percentages) is shown for. Defaults to the newest year we have.
+  const [snapshotYear, setSnapshotYear] = useState(latestReportYear)
+  const snapshotEmissions =
+    emissionsByYear.find(row => row.year === snapshotYear) ||
+    emissionsByYear[emissionsByYear.length - 1]
   // desstructure out the different emissions categories for simplicity below
   const {
     buildings: buildingsEmissions,
     dirty_power: dirtyPowerEmissions,
     dumps_farms_industrial_other: farmsDumpsOtherEmissions,
     transportation: transportionEmissions,
-  } = latestEmissions
+  } = snapshotEmissions
 
   // sum, then make nice percentages
   const sumOfEmissions =
@@ -344,6 +352,11 @@ export default function StateDetailsPage({ stateSlug, data }) {
         </a>
       </div>
 
+      {/* When each dataset on this page was last updated */}
+      <div className="col-12">
+        <DataFreshness />
+      </div>
+
       {/* Intro Section */}
       <div className="col-12">
         <p className="h2 text-center font-weight-light mt-6 mb-5">
@@ -381,6 +394,54 @@ export default function StateDetailsPage({ stateSlug, data }) {
         <hr className="mt-7 mb-7" />
       </div>
 
+      {/*
+       * Temporal view: let people see the state's sector breakdown and shares
+       * at any reporting year we have data for, not just the newest one.
+       */}
+      <div className="col-12 text-center mb-4">
+        <label
+          className="small text-secondary mr-2 mb-0"
+          htmlFor="snapshot-year"
+        >
+          Show this state's emissions breakdown for
+        </label>
+        <select
+          id="snapshot-year"
+          className="custom-select d-inline-block w-auto"
+          value={snapshotYear}
+          onChange={event => setSnapshotYear(Number(event.target.value))}
+        >
+          {emissionsByYear
+            .slice()
+            .reverse()
+            .map(row => (
+              <option key={row.year} value={row.year}>
+                {row.year}
+              </option>
+            ))}
+        </select>
+        <div className="small text-secondary mt-2">
+          As of {snapshotYear}:{" "}
+          <strong>{Math.round(sumOfEmissions).toLocaleString()}</strong> million
+          metric tons CO<sub>2</sub>e
+          {snapshotYear !== latestReportYear && (
+            <>
+              {" "}
+              (latest reported year is {latestReportYear}
+              {" — "}
+              <button
+                type="button"
+                className="btn btn-link btn-sm p-0 align-baseline"
+                onClick={() => setSnapshotYear(latestReportYear)}
+              >
+                reset
+              </button>
+              )
+            </>
+          )}
+        </div>
+      </div>
+
       <div className="row state-details-main" id="state-details-main">
         {/**
          * Our main chart for desktop ONLY (others are hidden) this chart
@@ -388,15 +449,42 @@ export default function StateDetailsPage({ stateSlug, data }) {
          */}
         <div className="col-4 sticky-cont d-none d-xl-block">
           <div className="graph-title font-weight-bold mb-3">
-            {placeTitle}'s climate pollution, by source
+            {placeTitle}'s climate pollution, by source ({snapshotYear})
           </div>
 
           <SingleBarChart
             isSticky={true}
-            emissionsData={latestEmissions}
+            emissionsData={snapshotEmissions}
             activeKey={scrollGraphSettings.active}
             greenKeys={scrollGraphSettings.green}
           />
+
+          {/* Exact values for the selected year, so years can be compared */}
+          <dl className="snapshot-values small mb-2 mt-3">
+            <div>
+              <dt>🏠 Buildings</dt>
+              <dd>{Math.round(buildingsEmissions).toLocaleString()}</dd>
+            </div>
+            <div>
+              <dt>🚗 Transportation</dt>
+              <dd>{Math.round(transportionEmissions).toLocaleString()}</dd>
+            </div>
+            <div>
+              <dt>🔌 Dirty power</dt>
+              <dd>{Math.round(dirtyPowerEmissions).toLocaleString()}</dd>
+            </div>
+            <div>
+              <dt>🏭 Farms, industry &amp; other</dt>
+              <dd>{Math.round(farmsDumpsOtherEmissions).toLocaleString()}</dd>
+            </div>
+            <div className="font-weight-bold">
+              <dt>Total ({snapshotYear})</dt>
+              <dd>{Math.round(sumOfEmissions).toLocaleString()}</dd>
+            </div>
+          </dl>
+          <span className="text-secondary keyText">
+            Values in million metric tons CO<sub>2</sub>e.
+          </span>
           <br />
           <span className="text-secondary keyText">
             Source: {getShortCitation("emissions")}
@@ -422,7 +510,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
             <div className="row mt-5">
               <div className="col-12 col-md-6 d-block d-xl-none mb-6">
                 <SingleBarChart
-                  emissionsData={latestEmissions}
+                  emissionsData={snapshotEmissions}
                   activeKey={"buildings"}
                 />
               </div>
@@ -526,7 +614,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
 
             <div className="mt-4 d-flex justify-content-center d-block d-xl-none">
               <SingleBarChart
-                emissionsData={latestEmissions}
+                emissionsData={snapshotEmissions}
                 greenKeys={["buildings"]}
               />
             </div>
@@ -542,7 +630,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
               {/* Make SingleBarChart full width on mobile */}
               <div className="col-12 col-md-6 d-block d-xl-none mb-6">
                 <SingleBarChart
-                  emissionsData={latestEmissions}
+                  emissionsData={snapshotEmissions}
                   activeKey="transportation"
                   greenKeys={["buildings"]}
                 />
@@ -617,7 +705,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
 
             <div className="mt-4 d-flex justify-content-center d-block d-xl-none">
               <SingleBarChart
-                emissionsData={latestEmissions}
+                emissionsData={snapshotEmissions}
                 greenKeys={["buildings", "transportation"]}
               />
             </div>
@@ -635,7 +723,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
                 {/* Make SingleBarChart full width on mobile */}
                 <div className="col-12 col-md-6 d-block d-xl-none mb-6">
                   <SingleBarChart
-                    emissionsData={latestEmissions}
+                    emissionsData={snapshotEmissions}
                     activeKey="dirty_power"
                     greenKeys={["buildings", "transportation"]}
                   />
@@ -840,7 +928,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
 
               <div className="mt-5 d-flex justify-content-center d-block d-xl-none">
                 <SingleBarChart
-                  emissionsData={latestEmissions}
+                  emissionsData={snapshotEmissions}
                   greenKeys={["buildings", "transportation", "dirty_power"]}
                 />
               </div>
@@ -893,7 +981,7 @@ export default function StateDetailsPage({ stateSlug, data }) {
               {/* Make SingleBarChart full width on mobile */}
               <div className="col-12 col-md-6 d-block d-xl-none">
                 <SingleBarChart
-                  emissionsData={latestEmissions}
+                  emissionsData={snapshotEmissions}
                   activeKey="dumps_farms_industrial_other"
                   greenKeys={["buildings", "transportation", "dirty_power"]}
                 />

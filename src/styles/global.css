@@ -595,3 +595,29 @@ footer a {
 .already-electrified-chart text {
   font-size: 0.9rem;
 }
+
+/**
+ * "Data updated" provenance block + per-year snapshot readout on state pages
+ */
+.data-freshness-list dt {
+  margin-bottom: 0;
+}
+
+.snapshot-values > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #ececec;
+  padding: 0.15rem 0;
+}
+
+.snapshot-values dt {
+  margin: 0;
+  font-weight: 400;
+}
+
+.snapshot-values dd {
+  margin: 0 0 0 0.5rem;
+  text-align: right;
+  white-space: nowrap;
+}
