@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "decarb-my-state",
+  // Set this to today's date
+  "compatibility_date": "2026-09-14",
+  // Static Gatsby 2 build output (asset-only Worker, no `main` script).
+  // Gatsby emits a 404.html fallback page; serve it for unmatched routes.
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
