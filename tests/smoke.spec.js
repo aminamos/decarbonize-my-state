@@ -18,6 +18,8 @@ test("home page renders the choropleth map", async ({ page }) => {
   expect(response.status()).toBe(200)
   await expect(page).toHaveTitle("Decarb My State")
 
+  await expect(page.locator("text=Data updated:")).toBeVisible()
+
   const states = page.locator("svg path[name]")
   await expect(states).toHaveCount(51)
 

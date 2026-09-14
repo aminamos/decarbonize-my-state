@@ -2,6 +2,7 @@ import React from "react"
 import Link from "../components/link"
 import Layout from "../components/layout"
 import StateEmissionsMap from "../components/state-emissions-map"
+import DataFreshness from "../components/data-freshness"
 import { getTerminologyHover } from "../constants/terminology-list"
 
 const IndexPage = ({ mapData }) => {
@@ -37,6 +38,9 @@ const IndexPage = ({ mapData }) => {
 
       <div className="mb-md-5">
         <StateEmissionsMap emissions={mapData} />
+        <div className="text-center mt-3">
+          <DataFreshness className="d-inline-block text-left" />
+        </div>
       </div>
 
       {/* Show list of states on mobile */}
