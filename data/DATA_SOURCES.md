@@ -237,10 +237,17 @@ plus the refresh-2026 additions at the bottom.
 - `current_solar`/`current_wind` now reflect 2025 generation; `perc_*_target`
   recomputed (`current/target*100`, integer-rounded — verified identical
   formula on the original file's 2021 values).
-- `total_gen_by_solar`/`total_gen_by_wind` are byte-identical to the Apr-2022
-  file: they are fixed project-computed scenario targets whose original
-  derivation is undocumented; only the "current" side of the progress
-  measure is refreshed.
+- `total_gen_by_solar`/`total_gen_by_wind` recomputed (was byte-identical to
+  Apr-2022). The derivation was reverse-engineered (documented in
+  `refresh_target_generation.py`): `total_rnw_gen_needed` = 2020 fossil
+  generation (coal+other_gas+natural_gas+petro_liquids+petro_coke — verified
+  exact against this repo's data) + electrified transport + buildings load
+  (unrecoverable spreadsheet coefficients, carried as fixed scenario load);
+  solar+wind ≈ 0.945 × needed in the May-2022 file; the per-state solar:wind
+  split is preserved verbatim. Recompute: only the fossil component is
+  re-based to 2025 (`needed = needed_2022 − fossil_2020 + fossil_2025`); AK/HI
+  (fossil-load-only targets) get fossil_2025 with the national average split.
+  Net effect: median +6.6% per-state target, range −11% (WV) to +26% (AK).
 
 ### 11. `raw/buildings_data.csv` → ResStock/ComStock 2024.2 (was 2021 releases)
 
