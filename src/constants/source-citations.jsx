@@ -59,38 +59,43 @@ const sourceCitations = [
   },
   {
     slug: "building-energy",
-    title: "U.S. Building Stock Characterization Study",
+    title:
+      "End Use Load Profiles for the U.S. Building Stock (ResStock & ComStock 2024.2)",
     source: "The National Renewable Energy Laboratory (NREL)",
     source_short: "NREL",
-    date: "Dec 2021",
-    link: "https://www.nrel.gov/docs/fy22osti/83063.pdf",
+    date: "Apr 2025",
+    link: "https://resstock.nrel.gov/datasets",
   },
   {
     slug: "vehicles",
     title: "State Motor-Vehicle Registrations",
     source: "U.S. Department of Transportation",
     source_short: "DOT",
-    date: "Feb 2021",
-    link: "https://www.fhwa.dot.gov/policyinformation/statistics/2017/mv1.cfm",
+    date: "Jan 2026",
+    link: "https://www.fhwa.dot.gov/policyinformation/statistics/2024/mv1.cfm",
+    note:
+      "EV registrations from DOE AFDC 'Electric Vehicle Registrations by State' (Experian-sourced, Dec 31 2023 counts, Sep 2024 update): https://afdc.energy.gov/data/10962.",
   },
   {
     slug: "power-plants",
-    title: "Environmental Justice Screening and Mapping Tool (EJScreen)",
+    title: "Power Plants and Neighboring Communities",
     source: "U.S. Environmental Protection Agency (EPA)",
     source_short: "EPA",
-    date: "Jan 2021",
+    date: "Jun 2025",
     link:
-      "https://www.epa.gov/airmarkets/power-plants-and-neighboring-communities#mapping",
+      "https://www.epa.gov/power-sector/power-plants-and-neighboring-communities-mapping-tool",
+    note:
+      "Plant roster and emissions from eGRID2023 revision 2 (data year 2023); neighboring-community columns from the PPNC uniform-buffers dataset (2022, published Jan 2025).",
   },
   {
     slug: "power-generation",
     title:
-      "Historical State Data annual_generation_state.xls (1990-2024 final) plus SEDS small-scale solar",
+      "Historical State Data annual_generation_state.xlsx (1990-2025 final) plus small-scale solar",
     source: "U.S. Energy Information Administration (EIA)",
     source_short: "EIA",
-    date: "Oct 2025",
+    date: "Sep 2026",
     link: "https://www.eia.gov/electricity/data/state/",
     note:
-      "Small-scale solar from the State Energy Data System (SEDS) use_all_phy.csv, 1960-2024 final, Jun 2026; 2001-2020 values retain the retired EIA Open Data API v1 basis -- see data/DATA_SOURCES.md.",
+      "Small-scale solar: SEDS use_all_phy.csv through 2024 (final, Jun 2026); EIA-861M for 2025 (SEDS-2025 not yet published; AL small-scale PV suppressed as NM). 2001-2020 values retain the retired EIA Open Data API v1 basis -- see data/DATA_SOURCES.md.",
   },
 ]

@@ -1,7 +1,9 @@
-# Data sources — live check + refresh notes (branch `refresh-mn-wa-ca-or-ny`)
+# Data sources — live check + refresh notes (branch `refresh-2026`)
 
-Focus states for this refresh: MN, WA, CA, OR, NY. Where the upstream file is
-national, all states were extended (same effort, keeps state-comparison charts coherent).
+Second refresh pass (tracked in `aminamos/social-stuff#1`): vehicles,
+power plants, generation 2025, target-generation "current" values, and
+buildings were all refreshed. See "Refreshed in this branch" sections below
+plus the refresh-2026 additions at the bottom.
 
 ## Refreshed in this branch
 
@@ -173,6 +175,98 @@ national, all states were extended (same effort, keeps state-comparison charts c
   "Electric Vehicle Registrations by State" (Experian-sourced, latest Dec-2023 vintage,
   updated Sep 2024): `https://afdc.energy.gov/data/10962`.
   Full MV-1 + AFDC rebuild is the natural next PR; untouched here.
+
+## refresh-2026 additions
+
+### 7. `raw/vehicles_data.csv` → MV-1 2024 + AFDC Dec-2023 (was MV-1 2017 + ~2019 EV)
+
+- Script: `data/scripts/build_vehicles.py <mv1.html> <afdc_ev.xlsx> <out.csv>`.
+- Inputs: FHWA Highway Statistics Table MV-1 2024
+  (`https://www.fhwa.dot.gov/policyinformation/statistics/2024/mv1.cfm`,
+  published Jan 2026) and DOE AFDC "Electric Vehicle Registrations by State"
+  (dataset 10962, Experian-sourced counts as of Dec 31, 2023, workbook updated
+  Sep 2024: `https://afdc.energy.gov/data/10962`).
+- Method: parse the MV-1 HTML table's two-level header (5 classes ×
+  private/public/total), map to the existing 17-column schema, normalize
+  `Dist. of Col.` → `District of Columbia`, merge AFDC `EV_Registration` on
+  state name, append the `united_states` aggregate row. 52 rows, no missing
+  values. Footnote markers ("N", "R", footnote refs) stripped.
+
+### 8. `raw/power_plants_and_communities.csv` → eGRID2023 + PPNC 2022 (was eGRID2019 + EJScreen 2018)
+
+- Script: `data/scripts/build_power_plants.py <egrid2023.xlsx> <uniform-buffers.csv> <out.csv>`.
+- Inputs: eGRID2023 revision 2 workbook (`PLNT23` sheet,
+  `https://www.epa.gov/system/files/documents/2025-06/egrid2023_data_rev2.xlsx`,
+  Jun 2025) joined on `ORISPL` to EPA's "Power Plants and Neighboring
+  Communities" uniform-buffers CSV (2022 vintage, published Jan 2025,
+  `https://www.epa.gov/system/files/other-files/2025-01/uniform-buffers.csv`
+  via `https://www.epa.gov/power-sector/power-plants-and-neighboring-communities-mapping-tool`).
+- Roster criterion: `PLHTIAN > 0` (combustion plants) — reproduces the old
+  file's effective roster, not "fossil generation > 0" (546 old plants burn
+  fuel but netted zero fossil generation, mostly biomass).
+- Roster delta vs 2019: 3,307 plants (was 3,477); 464 retired, 294 new,
+  ~83 renamed (new slugs). 3,244 of 3,307 plants have PPNC community stats;
+  the remaining 63 are eGRID-only (PPNC covers 2022, eGRID covers 2023).
+- Field mapping: `PSTATABB`/`PNAME`/`UTLSRVNM`/`CNTYNAME`/`LAT`/`LON`/
+  `PLFUELCT`/`NAMEPCAP`/`PLNGENAN`/`PLNOXAN`/`PLSO2AN`/`PLCO2AN`/`PLCH4AN`/
+  `PLN2OAN`/`PLCO2EQA` → the existing column names; slugs regenerated.
+  `get_power_plants.py` keeps the same 14 frontend fields as before.
+- Satellite images: the old `fetch_map_images.py` used a Google Static Maps
+  key that now returns HTTP 403. New images for missing plants are fetched by
+  `fetch_plant_images.py` from Esri World Imagery (`server.arcgisonline.com`
+  export endpoint, no key) at the same 800×800 size and ~zoom-16 framing,
+  with a drawn marker pin. The plant page also now hides a missing image via
+  `onError` so future roster additions degrade gracefully.
+
+### 9. `raw/us_electric_generation_2001_20.csv` → through 2025 (was 2024)
+
+- Script: `data/scripts/append_generation_year.py <annual_gen.xlsx> <861m.xlsx> <year> <raw.csv> <out.csv>`.
+- Inputs: EIA "Net Generation by State" workbook, final 2025 (`Net_Generation_
+  1990-2025 Final` sheet, released Sep 2026), plus EIA-861M "Estimated Small
+  Scale Solar PV Capacity and Generation" 2025 archive file for
+  `small_scale_photovoltaic` (SEDS-2025 is not published until ~mid-2027).
+- Method: same column mapping as the 2021–2024 append; `all_solar` =
+  utility + small-scale. 51 new rows (50 states + DC; the file has no US row).
+- Known gap: Alabama small-scale PV is suppressed (`NM`) in EIA-861M 2025, so
+  `small_scale_photovoltaic` is blank and `all_solar` for AL is utility-scale
+  only (~861 MWh missing, <0.1% of AL's `all_solar`).
+
+### 10. `raw/state_renewable_gen_targets.csv` — current_* rebased to 2025
+
+- Script: `data/scripts/refresh_target_generation.py <gen.csv> <targets.csv> <out.csv>`.
+- `current_solar`/`current_wind` now reflect 2025 generation; `perc_*_target`
+  recomputed (`current/target*100`, integer-rounded — verified identical
+  formula on the original file's 2021 values).
+- `total_gen_by_solar`/`total_gen_by_wind` recomputed (was byte-identical to
+  Apr-2022). The derivation was reverse-engineered (documented in
+  `refresh_target_generation.py`): `total_rnw_gen_needed` = 2020 fossil
+  generation (coal+other_gas+natural_gas+petro_liquids+petro_coke — verified
+  exact against this repo's data) + electrified transport + buildings load
+  (unrecoverable spreadsheet coefficients, carried as fixed scenario load);
+  solar+wind ≈ 0.945 × needed in the May-2022 file; the per-state solar:wind
+  split is preserved verbatim. Recompute: only the fossil component is
+  re-based to 2025 (`needed = needed_2022 − fossil_2020 + fossil_2025`); AK/HI
+  (fossil-load-only targets) get fossil_2025 with the national average split.
+  Net effect: median +6.6% per-state target, range −11% (WV) to +26% (AK).
+
+### 11. `raw/buildings_data.csv` → ResStock/ComStock 2024.2 (was 2021 releases)
+
+- Script: `data/scripts/build_buildings.py <resstock_baseline.parquet> <comstock_agg_dir> <out.csv>`.
+- Inputs: ResStock 2024.2 `amy2018_release_2` `metadata/baseline.parquet`
+  (~550k samples, 49 states, read column-pruned from the oedi-data-lake S3
+  bucket) and ComStock 2024 `amy2018_release_2` per-state `*_baseline_agg_basic.csv.gz`
+  aggregates (51 files, `in.upgrade_name == "Baseline"`).
+- Method: weighted building counts and non-electric heating / water-heating /
+  cooking-range counts per state; `weightedFossilBuildingsPct` /
+  `weightedEleBuildingsPct` recomputed with the same definitions as before
+  (heating + water heating + range fuels; electricity on the other side).
+  States lacking NREL coverage keep the previous convention (AK, HI: NREL
+  columns zeroed, Microsoft footprint counts retained). `united_states` row
+  = column sums (this also fixes the old file's incorrect 30M US buildings
+  total — the Microsoft footprint sum is ~130M).
+- Fossil-share numbers shift a few points downward vs the 2021 release —
+  consistent with real electrification gains plus stock-model revisions;
+  the definitions are unchanged.
 
 ## Pipeline compatibility
 - `data/scripts/utils.py`: `DataFrame.applymap` → `.map` (applymap was removed in

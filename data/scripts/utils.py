@@ -122,8 +122,8 @@ def get_and_clean_csv(path_to_csv, state_col="state", cols_to_keep=None, number_
     if number_cols is not None:
         for number_col in number_cols:
             # Strip out commas and then convert to int so the FE can do rounding and
-            # what not
-            df[number_col] = df[number_col].str.replace(',', '').astype(float)
+            # what not. astype(str) first so plain-numeric columns also work.
+            df[number_col] = df[number_col].astype(str).str.replace(',', '').astype(float)
 
     if cols_to_keep is None:
         return df

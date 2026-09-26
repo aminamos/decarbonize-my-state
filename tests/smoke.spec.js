@@ -56,7 +56,7 @@ test("plant pages never render NaN", async ({ page }) => {
   // Covers the plants whose source values are blank or parenthesized
   const paths = [
     "/tennessee/power-plant/allen",
-    "/wisconsin/power-plant/wisconsin-rapids-paper-mill",
+    "/west_virginia/power-plant/morgantown-energy-facility",
     "/wisconsin/power-plant/fitchburg-generating-station",
     "/minnesota/power-plant/sherburne-county",
   ]

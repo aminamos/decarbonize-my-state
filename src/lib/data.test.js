@@ -48,7 +48,7 @@ describe("getStateBundle", () => {
       row => row.year
     )
     expect(Math.min(...generationYears)).toBe(2001)
-    expect(Math.max(...generationYears)).toBe(2024)
+    expect(Math.max(...generationYears)).toBe(2025)
   })
 
   it("includes a united_states row for the About page chart", () => {

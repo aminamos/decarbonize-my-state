@@ -137,7 +137,14 @@ const PowerPlantDetailPage = ({ plantSlug, data }) => {
             </a>
           </div>
 
-          <img src={MapImgUrl} className="map-img"></img>
+          <img
+            src={MapImgUrl}
+            className="map-img"
+            alt={`Satellite view of ${PowerPlant.plant_name}`}
+            onError={e => {
+              e.currentTarget.style.display = "none"
+            }}
+          />
         </div>
 
         <p className="mt-2 text-secondary">
